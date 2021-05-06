@@ -59,6 +59,12 @@ public class Questions {
 	}
 	
 	@Step
+	public void esperarElemento() {
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+	
+	
+	@Step
 	public void AsserCargaArchivoMaximo() {
 	String mensaje = driver.findElement(By.xpath("//div[contains(text(),'Límite de archivos a anexar 5')]")).getText();
 	System.out.println(mensaje);
@@ -74,4 +80,22 @@ public class Questions {
 	Assert.assertEquals("¿Está seguro que desea registrar esta información para el periodo de cumplimiento?", mensaje);
 	
 	}
+	
+	@Step
+	public void AsserSeguroContinuar() {
+		
+	String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
+	Assert.assertEquals("¿Está seguro que desea continuar?", mensaje);
+	
+	}
+	
+	@Step
+	public void AsserContinuarPiramide() {
+		
+	String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
+	Assert.assertEquals("¿Está seguro que desea registrar estas denominaciones para la pirámide de cumplimiento?", mensaje);
+	
+	}
+	
+	
 }

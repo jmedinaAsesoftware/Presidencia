@@ -24,7 +24,7 @@ public class Conexion {
 	
 	
 	@Step
-	public void CerrarNavegador() {
+	public void CerrarNavegadorWer( WebDriver driver) {
 		
 		driver.close();
 		
