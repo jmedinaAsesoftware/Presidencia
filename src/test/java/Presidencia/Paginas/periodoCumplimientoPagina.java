@@ -9,14 +9,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import Presidencia.Steps.botonesPaginas;
-import Presidencia.Steps.Questions;
+import Presidencia.Steps.preguntas;
 import net.thucydides.core.annotations.Step;
 
 public class periodoCumplimientoPagina {
 
 	private WebDriver driver;
 	private botonesPaginas botonesPaginas;
-	private Questions questions;
+	private preguntas questions;
 
 	@FindBy(how = How.XPATH, using = "//input[@name = 'fechaInicio']")
 	private WebElement TextoFechaInicio;
@@ -34,7 +34,7 @@ public class periodoCumplimientoPagina {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 		this.botonesPaginas = new botonesPaginas(driver);
-		this.questions = new Questions(driver);
+		this.questions = new preguntas(driver);
 	}
 
 	@Step
