@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import com.ibm.icu.text.SimpleDateFormat;
 import net.thucydides.core.annotations.Step;
@@ -16,12 +18,11 @@ import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 
-public class Questions {
-
+public class preguntas {
 
 	private WebDriver driver;
 
-	public Questions(WebDriver driver) {
+	public preguntas(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -57,45 +58,44 @@ public class Questions {
 	public void impliciWait() {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	
+
 	@Step
 	public void esperarElemento() {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
-	
-	
+
 	@Step
 	public void AsserCargaArchivoMaximo() {
-	String mensaje = driver.findElement(By.xpath("//div[contains(text(),'Límite de archivos a anexar 5')]")).getText();
-	System.out.println(mensaje);
-	Assert.assertEquals("Alerta\n"
-			+ "Límite de archivos a anexar 5", mensaje);
-	
+		String mensaje = driver.findElement(By.xpath("//div[contains(text(),'Límite de archivos a anexar 5')]"))
+				.getText();
+		System.out.println(mensaje);
+		Assert.assertEquals("Alerta\n" + "Límite de archivos a anexar 5", mensaje);
+
 	}
-	
+
 	@Step
 	public void AsserGuardarCumpliento() {
-		
-	String mensaje = driver.findElement(By.xpath("//div[@role = 'dialog']//h2")).getText();
-	Assert.assertEquals("¿Está seguro que desea registrar esta información para el periodo de cumplimiento?", mensaje);
-	
+
+		String mensaje = driver.findElement(By.xpath("//div[@role = 'dialog']//h2")).getText();
+		Assert.assertEquals("¿Está seguro que desea registrar esta información para el periodo de cumplimiento?",
+				mensaje);
+
 	}
-	
+
 	@Step
 	public void AsserSeguroContinuar() {
-		
-	String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
-	Assert.assertEquals("¿Está seguro que desea continuar?", mensaje);
-	
+
+		String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
+		Assert.assertEquals("¿Está seguro que desea continuar?", mensaje);
+
 	}
-	
+
 	@Step
 	public void AsserContinuarPiramide() {
-		
-	String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
-	Assert.assertEquals("¿Está seguro que desea registrar estas denominaciones para la pirámide de cumplimiento?", mensaje);
-	
+
+		String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
+		Assert.assertEquals("¿Está seguro que desea registrar estas denominaciones para la pirámide de cumplimiento?",
+				mensaje);
+
 	}
-	
-	
 }

@@ -6,29 +6,29 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import Presidencia.Steps.botonesPaginas;
-import Presidencia.Steps.Questions;
+import Presidencia.Steps.preguntas;
 import net.thucydides.core.annotations.Step;
 
 public class tiposRiesgosPagina {
 
 	private WebDriver driver;
 	private botonesPaginas botonesPaginas;
-	private Questions questions;
+	private preguntas questions;
 
 	@FindBy(how = How.XPATH, using = "//input[@name = 'denominacion']")
 	private WebElement textoDenominacion;
 
 	@FindBy(how = How.XPATH, using = "//input[@name = 'descripcion']")
 	private WebElement textoDescripcion;
-
-	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//p")
-	private WebElement alertaYaExiste;
+	
+	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//p[@class = 'MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-filled MuiFormHelperText-marginDense']")
+	private WebElement assertYaExiste;
 
 	public tiposRiesgosPagina(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 		this.botonesPaginas = new botonesPaginas(driver);
-		this.questions = new Questions(driver);
+		this.questions = new preguntas(driver);
 	}
 
 	@Step
@@ -50,23 +50,38 @@ public class tiposRiesgosPagina {
 	}
 
 	@Step
-	public void diligenciarTipoRiesgo(String denominacionP, String descripcionP) {
+	public void btnAgregarRiesgoM() {
 		questions.tiempoSegundos(1);
 		questions.screenShot();
 		botonesPaginas.btnAgregarRiesgo();
+	}
+	
+	@Step
+	public void btnEditarRiesgoM(String nombreBuscar) {
+		questions.tiempoSegundos(1);
+		questions.screenShot();
+		botonesPaginas.btnEditarRiesgo(nombreBuscar);
+	}
+	
+	@Step
+	public void diligenciarTipoRiesgo(String denominacionP, String descripcionP) {
+		
+		textoDenominacion.clear();
 		textoDenominacion.sendKeys(denominacionP);
+		textoDescripcion.clear();
 		textoDescripcion.sendKeys(descripcionP);
 		questions.screenShot();
 		questions.impliciWait();
 		botonesPaginas.btnDiagGuardar();
-		questions.impliciWait();
-		questions.screenShot();
-		if (alertaYaExiste.getText().equals("La denominación ya existe")) {
+		
+		if (assertYaExiste != null) {
 
 			questions.screenShot();
-			botonesPaginas.btnDiagCerrar();
 
 		}
-		
+
+		questions.impliciWait();
+		questions.screenShot();
+
 	}
 }

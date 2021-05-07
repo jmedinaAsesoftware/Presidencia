@@ -53,6 +53,14 @@ public class DefinitionsSteps {
 	@When("^agregue un tipo de riesgo denominado (.*) y descripcion (.*)$")
 	public void agregarTipoRiesgo(String denominacionP, String descripcionP) {
 		this.tiposRiesgosPage = new tiposRiesgosPagina(driver);
+		this.tiposRiesgosPage.btnAgregarRiesgoM();
+		this.tiposRiesgosPage.diligenciarTipoRiesgo(denominacionP, descripcionP);
+	}
+	
+	@When("^Editar un tipo de riesgo  nombre a buscar (.*) denominado (.*) y descripcion (.*)$")
+	public void editarTipoRiesgo(String nombreBuscar, String denominacionP, String descripcionP) {
+		this.tiposRiesgosPage = new tiposRiesgosPagina(driver);
+		this.tiposRiesgosPage.btnEditarRiesgoM(nombreBuscar);
 		this.tiposRiesgosPage.diligenciarTipoRiesgo(denominacionP, descripcionP);
 	}
 }

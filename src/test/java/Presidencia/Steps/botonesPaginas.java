@@ -5,6 +5,11 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.util.List;
+
+import org.apache.tools.ant.filters.LineContains.Contains;
+import org.jsoup.select.Evaluator.ContainsText;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +19,7 @@ import org.openqa.selenium.support.PageFactory;
 public class botonesPaginas {
 
 	private WebDriver driver;
-	private Questions questions = new Questions(driver);
+	private preguntas questions = new preguntas(driver);
 
 	@FindBy(how = How.CSS, using = "div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-3 > div > svg")
 	private WebElement BtnPrepararPeriodo;
@@ -39,24 +44,29 @@ public class botonesPaginas {
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Continuar')]")
 	private WebElement BtnContinuar;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//button[contains(text(),'Continuar')]")
 	private WebElement btnDiagContinuar;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@class = 'contenedor']//label[contains(text(), 'Agregar tipo de riesgo +')]")
 	private WebElement btnAgregarRiesgo;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//div//button[contains(text(),'Guardar')]")
 	private WebElement btnDiagGuardar;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//div//button[contains(text(),'Cerrar')]")
 	private WebElement btnDiagCerrar;
-	
-	
+
+	@FindBy(how = How.XPATH, using = "//table//tbody//tr//*[contains(text(),'Automatizacion')]")
+	private WebElement btnPrueba;
+
+	@FindBy(how = How.XPATH, using = "//table//tbody//tr//*[@class = 'border']")
+	private WebElement btnEditarRiesgo;
+
 	public botonesPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
-		this.questions = new Questions(driver);
+		this.questions = new preguntas(driver);
 	}
 
 	public void BtnPrepararPeriodo() {
@@ -128,7 +138,7 @@ public class botonesPaginas {
 		questions.tiempoSegundos(1);
 
 	}
-	
+
 	public void btnDiagContinuar() {
 		btnDiagContinuar.click();
 		questions.impliciWait();
@@ -146,9 +156,23 @@ public class botonesPaginas {
 		questions.tiempoSegundos(1);
 
 	}
+
 	public void btnDiagCerrar() {
 		btnDiagCerrar.click();
 		questions.impliciWait();
+
+	}
+
+	public void btnEditarRiesgo(String nombreBuscar) {
+
+		WebElement todosTD = driver
+				.findElement(By.xpath("//table/tbody/tr//label[contains(text(),'" + nombreBuscar + "')]"));
+		todosTD.click();
+
+		WebElement btnEdit = driver.findElement(By.xpath("//table/tbody/tr[1]/td[5]"));
+		System.out.println(btnEdit.getText());
+
+		btnEdit.click();
 
 	}
 }
