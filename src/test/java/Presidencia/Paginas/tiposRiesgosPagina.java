@@ -47,6 +47,7 @@ public class tiposRiesgosPagina {
 		questions.screenShot();
 		questions.AsserContinuarPiramide();
 		botonesPaginas.BtnSi();
+		questions.impliciWait();
 	}
 
 	@Step
@@ -64,8 +65,8 @@ public class tiposRiesgosPagina {
 	}
 	
 	@Step
-	public void diligenciarTipoRiesgo(String denominacionP, String descripcionP) {
-		
+	public void diligenciarTipoRiesgoM(String denominacionP, String descripcionP) {
+		questions.screenShot();
 		textoDenominacion.clear();
 		textoDenominacion.sendKeys(denominacionP);
 		textoDescripcion.clear();
