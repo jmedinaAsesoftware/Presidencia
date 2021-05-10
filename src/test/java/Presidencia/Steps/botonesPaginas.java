@@ -165,14 +165,7 @@ public class botonesPaginas {
 
 	public void btnEditarRiesgo(String nombreBuscar) {
 
-		WebElement todosTD = driver
-				.findElement(By.xpath("//table/tbody/tr//label[contains(text(),'" + nombreBuscar + "')]"));
-		todosTD.click();
-
-		WebElement btnEdit = driver.findElement(By.xpath("//table/tbody/tr[1]/td[5]"));
-		System.out.println(btnEdit.getText());
-
-		btnEdit.click();
+		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscar + "')]/../../td[5]")).click();
 
 	}
 }
