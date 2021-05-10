@@ -9,12 +9,8 @@ import org.junit.Assert;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-
 import com.ibm.icu.text.SimpleDateFormat;
 import net.thucydides.core.annotations.Step;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 
@@ -96,6 +92,14 @@ public class preguntas {
 		String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
 		Assert.assertEquals("¿Está seguro que desea registrar estas denominaciones para la pirámide de cumplimiento?",
 				mensaje);
+
+	}
+
+	@Step
+	public void AsserEvaluacionRiesgos() {
+
+		String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
+		Assert.assertEquals("¿Está seguro que desea dejar estos elementos configurados para este periodo?", mensaje);
 
 	}
 }

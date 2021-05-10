@@ -5,10 +5,6 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.util.List;
-
-import org.apache.tools.ant.filters.LineContains.Contains;
-import org.jsoup.select.Evaluator.ContainsText;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -38,6 +34,9 @@ public class botonesPaginas {
 
 	@FindBy(how = How.CSS, using = "div:nth-child(2) > div > button")
 	private WebElement BtnGuardar;
+
+	@FindBy(how = How.XPATH, using = "//div//button[contains(text(),'Guardar')]")
+	private WebElement btnPrincipalGuardar;
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Si')]")
 	private WebElement BtnSi;
@@ -133,9 +132,9 @@ public class botonesPaginas {
 	}
 
 	public void BtnContinuar() {
-		BtnContinuar.click();
-		questions.impliciWait();
+		BtnContinuar.isDisplayed();
 		questions.tiempoSegundos(1);
+		BtnContinuar.click();
 
 	}
 
@@ -168,4 +167,12 @@ public class botonesPaginas {
 		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscar + "')]/../../td[5]")).click();
 
 	}
+
+	public void btnPrincipalGuardar() {
+		questions.tiempoSegundos(1);
+		btnPrincipalGuardar.click();
+
+	}
+
+	
 }
