@@ -8,6 +8,7 @@ import Presidencia.Paginas.EvaluacionRiesgoPagina;
 import Presidencia.Paginas.periodoCumplimientoPagina;
 import Presidencia.Paginas.tiposRiesgosPagina;
 import Presidencia.Steps.Conexion;
+import Presidencia.Steps.ElementosPaginas;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -20,6 +21,7 @@ public class DefinitionsSteps {
 	private periodoCumplimientoPagina periodoCumplimientoPage = new periodoCumplimientoPagina(driver);
 	private tiposRiesgosPagina tiposRiesgosPage = new tiposRiesgosPagina(driver);
 	private EvaluacionRiesgoPagina evaluacionRiesgoPagina = new EvaluacionRiesgoPagina(driver);
+	private ElementosPaginas elementosPaginas = new ElementosPaginas(driver);
 
 	@Given("^que se ingreso a la url$")
 	public void abrir_navegador() {
@@ -34,10 +36,16 @@ public class DefinitionsSteps {
 		this.periodoCumplimientoPage.informacioGeneral(FechaInicio, FechaFin);
 	}
 
+	@Then("^al hacer clic en guardar se debe almacenar la informacion$")
+	public void validarGuardado() throws AWTException {
+		this.periodoCumplimientoPage = new periodoCumplimientoPagina(driver);
+		this.periodoCumplimientoPage.validarArchivos();
+	}
+
 	@And("^se debe anexar documentos y ver archivos cargados$")
 	public void validarAnexarDocumentos() throws AWTException {
-		this.periodoCumplimientoPage = new periodoCumplimientoPagina(driver);
-		this.periodoCumplimientoPage.ValidarArchivosCargados();
+		this.elementosPaginas = new ElementosPaginas(driver);
+		this.elementosPaginas.ValidarArchivosCargados();
 	}
 
 	@And("^Se cierra el navegador$")
