@@ -20,7 +20,7 @@ public class tiposRiesgosPagina {
 
 	@FindBy(how = How.XPATH, using = "//input[@name = 'descripcion']")
 	private WebElement textoDescripcion;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//p[@class = 'MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-filled MuiFormHelperText-marginDense']")
 	private WebElement assertYaExiste;
 
@@ -56,14 +56,14 @@ public class tiposRiesgosPagina {
 		questions.screenShot();
 		botonesPaginas.btnAgregarRiesgo();
 	}
-	
+
 	@Step
 	public void btnEditarRiesgoM(String nombreBuscar) {
 		questions.tiempoSegundos(1);
 		questions.screenShot();
 		botonesPaginas.btnEditarRiesgo(nombreBuscar);
 	}
-	
+
 	@Step
 	public void diligenciarTipoRiesgoM(String denominacionP, String descripcionP) {
 		questions.screenShot();
@@ -74,13 +74,10 @@ public class tiposRiesgosPagina {
 		questions.screenShot();
 		questions.impliciWait();
 		botonesPaginas.btnDiagGuardar();
-		
+
 		if (assertYaExiste != null) {
-
 			questions.screenShot();
-
 		}
-
 		questions.impliciWait();
 		questions.screenShot();
 

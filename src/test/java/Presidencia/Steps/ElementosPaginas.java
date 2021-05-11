@@ -55,7 +55,7 @@ public class ElementosPaginas {
 			botonesPaginas.BtnSalir();
 		}
 
-		botonesPaginas.BtnAnexarDocumento();
+		//botonesPaginas.BtnAnexarDocumento();
 		botonesPaginas.CargarArchivo();
 		preguntas.tiempoSegundos(1);
 		preguntas.screenShot();

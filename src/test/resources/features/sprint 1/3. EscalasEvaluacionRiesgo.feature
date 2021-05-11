@@ -16,7 +16,7 @@ Scenario Outline: Agregar impacto en el cumplimiento (133080)
 		|Demaciado bajo |Descripcion1  |Nivel2  |descrip2	  |Nivel3 |Descr3		 |Nivel4 |Descrip4		|Nivel5	|Descri5       |
 		
 		
-		
+@Regresion		
 Scenario Outline: Agregar probabilidad de ocurrencia (133084) 
 	
 	When limpie los campos de probabilidad de ocurrencia 
