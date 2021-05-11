@@ -5,6 +5,8 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -99,23 +101,10 @@ public class botonesPaginas {
 
 	public void CargarArchivo() throws AWTException {
 
-		Robot robot = new Robot();
-		robot.setAutoDelay(1000);
-
-		StringSelection stringSelection = new StringSelection(
-				"C:\\Users\\jmedina\\Documents\\Captura\\RAC-26 Automatizacion Sinap.doc");
-		questions.impliciWait();
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_V);
-
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_V);
-
-		robot.setAutoDelay(1000);
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
+		File file = new File("C:\\Users\\jmedina\\Documents\\Captura\\RAC-26 Automatizacion Sinap.doc");
+		String path = file.getAbsolutePath();
+		driver.findElement(By.xpath("//input[@type = 'file']")).sendKeys(path);
+		questions.tiempoSegundos(1);
 
 	}
 
@@ -174,5 +163,4 @@ public class botonesPaginas {
 
 	}
 
-	
 }
