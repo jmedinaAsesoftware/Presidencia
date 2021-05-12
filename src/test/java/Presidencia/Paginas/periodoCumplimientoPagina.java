@@ -30,11 +30,13 @@ public class periodoCumplimientoPagina {
 	@FindBy(how = How.XPATH, using = "//div[@class ='MuiAlert-message']")
 	private WebElement AlertaLimites;
 
+
 	public periodoCumplimientoPagina(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 		this.botonesPaginas = new botonesPaginas(driver);
 		this.questions = new preguntas(driver);
+
 	}
 
 	@Step
@@ -51,44 +53,8 @@ public class periodoCumplimientoPagina {
 
 
 	@Step
-	public void ValidarArchivosCargados() throws AWTException {
+	public void validarArchivos() throws AWTException {
 
-		botonesPaginas.BtnVerArchivos();
-			
-		if (RegistrosAnexos != null) {
-			List<WebElement> RegistrosAnexosQ = driver.findElements(By.xpath("//button[contains(text(),'Eliminar')]"));
-			System.out.println(RegistrosAnexosQ.size());
-			questions.screenShot();
-			questions.impliciWait();
-			botonesPaginas.BtnSalir();
-		}
-
-		botonesPaginas.BtnAnexarDocumento();
-		botonesPaginas.CargarArchivo();
-		questions.tiempoSegundos(1);
-		questions.screenShot();
-		questions.esperarElemento();
-		
-		boolean mensaje = AlertaLimites.isDisplayed();
-		questions.esperarElemento();
-		String mensaje1 = AlertaLimites.getText();
-		System.out.print(mensaje);
-		if(mensaje1.contains("Éxito")) {
-			
-			questions.screenShot();
-			questions.impliciWait();
-			botonesPaginas.BtnVerArchivos();
-			questions.screenShot();
-			questions.impliciWait();
-			botonesPaginas.BtnSalir();
-		}
-		if(mensaje1.contains("Alerta")) {
-			
-			questions.screenShot();
-			questions.AsserCargaArchivoMaximo();
-			questions.impliciWait();
-			
-		}
 		questions.impliciWait();
 		botonesPaginas.BtnGuardar();
 		questions.tiempoSegundos(1);

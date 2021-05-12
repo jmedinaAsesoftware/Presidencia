@@ -1,5 +1,6 @@
 package Presidencia.Paginas;
 
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,13 +23,16 @@ public class tiposRiesgosPagina {
 
 	@FindBy(how = How.XPATH, using = "//input[@name = 'descripcion']")
 	private WebElement textoDescripcion;
-	
-	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//p[@class = 'MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-filled MuiFormHelperText-marginDense']")
-	private WebElement assertYaExiste;
+
 
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//h2[@class = 'MuiTypography-root MuiTypography-h6']")
 	private WebElement assertConfirmacionEliminar;
 	
+
+
+	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//p[@class = 'MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-filled MuiFormHelperText-marginDense']")
+	private WebElement assertYaExiste;
+
 	public tiposRiesgosPagina(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
@@ -52,6 +56,8 @@ public class tiposRiesgosPagina {
 		questions.screenShot();
 		questions.AsserContinuarPiramide();
 		botonesPaginas.BtnSi();
+		questions.impliciWait();
+
 	}
 
 	@Step
@@ -60,17 +66,18 @@ public class tiposRiesgosPagina {
 		questions.screenShot();
 		botonesPaginas.btnAgregarRiesgo();
 	}
-	
+
 	@Step
 	public void btnEditarRiesgoM(String nombreBuscar) {
 		questions.tiempoSegundos(1);
 		questions.screenShot();
 		botonesPaginas.btnEditarRiesgo(nombreBuscar);
 	}
-	
+
+
 	@Step
-	public void diligenciarTipoRiesgo(String denominacionP, String descripcionP) {
-		
+	public void diligenciarTipoRiesgoM(String denominacionP, String descripcionP) {
+		questions.screenShot();
 		textoDenominacion.clear();
 		textoDenominacion.sendKeys(denominacionP);
 		textoDescripcion.clear();
@@ -102,5 +109,6 @@ public class tiposRiesgosPagina {
 		botonesPaginas.BtnSi();
 		questions.impliciWait();
 		questions.screenShot();		
+
 	}
 }

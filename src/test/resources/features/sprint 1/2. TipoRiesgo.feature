@@ -1,9 +1,12 @@
 #07/05/2020
 #Jhonatan Medina Blanco
+
+@Regresion
 Feature: Determinar tipo de Riesgos (HU010) (USER STORY 131840) 
 Background: 
 	Given que se ingreso a la url 
 	And dirigirse al formulario de tipo de riesgo 
+
 @Regresion
 Scenario Outline: Agregar tipo de riego para el periodo actual (TEST CASE 133811) 
 
@@ -11,6 +14,7 @@ Scenario Outline: Agregar tipo de riego para el periodo actual (TEST CASE 133811
 	And Se cierra el navegador 
 	
 	Examples: 
+
 		|denominacionP|descripcionP			|
 		|echo 1		  |Creacion de riesgo   |	
 		|QA auto 	  |EJEMPLO	   			|
@@ -30,4 +34,3 @@ Scenario Outline: Eliminar tipo de riesgo para el periodo actual (TEST CASE 1330
 	Examples: 
 		|nombreBuscar	|
 		|cambio jhonatan   |  
-		
