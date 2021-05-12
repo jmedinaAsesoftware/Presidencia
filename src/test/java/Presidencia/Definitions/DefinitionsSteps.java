@@ -3,7 +3,6 @@ package Presidencia.Definitions;
 import java.awt.AWTException;
 
 import org.openqa.selenium.WebDriver;
-
 import Presidencia.Paginas.EvaluacionRiesgoPagina;
 import Presidencia.Paginas.periodoCumplimientoPagina;
 import Presidencia.Paginas.tiposRiesgosPagina;
@@ -12,6 +11,7 @@ import Presidencia.Steps.ElementosPaginas;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+
 import cucumber.api.java.en.When;
 
 public class DefinitionsSteps {
@@ -20,8 +20,10 @@ public class DefinitionsSteps {
 	private Conexion conexion = new Conexion();
 	private periodoCumplimientoPagina periodoCumplimientoPage = new periodoCumplimientoPagina(driver);
 	private tiposRiesgosPagina tiposRiesgosPage = new tiposRiesgosPagina(driver);
+
 	private EvaluacionRiesgoPagina evaluacionRiesgoPagina = new EvaluacionRiesgoPagina(driver);
 	private ElementosPaginas elementosPaginas = new ElementosPaginas(driver);
+
 
 	@Given("^que se ingreso a la url$")
 	public void abrir_navegador() {
@@ -36,6 +38,7 @@ public class DefinitionsSteps {
 		this.periodoCumplimientoPage.informacioGeneral(FechaInicio, FechaFin);
 	}
 
+
 	@Then("^al hacer clic en guardar se debe almacenar la informacion$")
 	public void validarGuardado() throws AWTException {
 		this.periodoCumplimientoPage = new periodoCumplimientoPagina(driver);
@@ -47,6 +50,7 @@ public class DefinitionsSteps {
 		this.elementosPaginas = new ElementosPaginas(driver);
 		this.elementosPaginas.ValidarArchivosCargados();
 	}
+
 
 	@And("^Se cierra el navegador$")
 	public void CerrarNavegador() {
@@ -64,6 +68,7 @@ public class DefinitionsSteps {
 	public void agregarTipoRiesgo(String denominacionP, String descripcionP) {
 		this.tiposRiesgosPage = new tiposRiesgosPagina(driver);
 		this.tiposRiesgosPage.btnAgregarRiesgoM();
+
 		this.tiposRiesgosPage.diligenciarTipoRiesgoM(denominacionP, descripcionP);
 	}
 
@@ -72,6 +77,13 @@ public class DefinitionsSteps {
 		this.tiposRiesgosPage = new tiposRiesgosPagina(driver);
 		this.tiposRiesgosPage.btnEditarRiesgoM(nombreBuscar);
 		this.tiposRiesgosPage.diligenciarTipoRiesgoM(denominacionP, descripcionP);
+	}
+	
+	@When("^Eliminar un tipo de riesgo  nombre a buscar (.*)$")
+	public void eliminarTipoRiesgo(String nombreBuscar) {
+		this.tiposRiesgosPage = new tiposRiesgosPagina(driver);
+		this.tiposRiesgosPage.btnEliminarRiesgoM(nombreBuscar);
+
 	}
 
 	@And("^dirigirse al formulario de evaluacion riesgo$")
@@ -122,5 +134,6 @@ public class DefinitionsSteps {
 		this.evaluacionRiesgoPagina.segundoDiligenciarProbabilidadM(nivel3P, descripNivel3P, nivel4P, descripNivel4P,
 				nivel5P, descripNivel5P);
 		this.evaluacionRiesgoPagina.guardarM();
+
 	}
 }

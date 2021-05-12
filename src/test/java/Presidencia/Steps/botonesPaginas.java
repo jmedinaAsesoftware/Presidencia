@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+
 import java.io.File;
 
 import org.openqa.selenium.By;
@@ -60,6 +61,12 @@ public class botonesPaginas {
 
 	@FindBy(how = How.XPATH, using = "//table//tbody//tr//*[contains(text(),'Automatizacion')]")
 	private WebElement btnPrueba;
+
+	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//button[@class='botonPrincipalBlanco']")
+	private WebElement btnNo;
+
+	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//button[@class='botonPrincipalAzul']")
+	private WebElement btnSi;
 
 	@FindBy(how = How.XPATH, using = "//table//tbody//tr//*[@class = 'border']")
 	private WebElement btnEditarRiesgo;
@@ -120,6 +127,12 @@ public class botonesPaginas {
 
 	}
 
+	public void BtnNo() {
+		BtnSi.click();
+		questions.impliciWait();
+
+	}
+
 	public void BtnContinuar() {
 		BtnContinuar.isDisplayed();
 		questions.tiempoSegundos(1);
@@ -157,10 +170,15 @@ public class botonesPaginas {
 
 	}
 
+	public void btnEliminarRiesgo(String nombreBuscar) {
+
+		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscar + "')]/../../td[4]")).click();
+
+	}
+
 	public void btnPrincipalGuardar() {
 		questions.tiempoSegundos(1);
 		btnPrincipalGuardar.click();
-
 	}
 
 }

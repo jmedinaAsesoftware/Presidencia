@@ -1,5 +1,6 @@
 #30/04/2020
 #Jhonatan Medina Blanco
+
 @Regresion 
 Feature: Registro del Período para la Gestión del Cumplimiento. Hu(007) (USER STORY 131817) 
 Background: 
@@ -9,6 +10,7 @@ Scenario Outline: Registro del Período para la Gestión del Cumplimiento (13298
 	When Se consulte la fecha inicio <FechaInicio> y fecha fin <FechaFin> 
 	And se debe anexar documentos y ver archivos cargados 
 	Then al hacer clic en guardar se debe almacenar la informacion
+
 	And Se cierra el navegador 
 	
 	Examples: 

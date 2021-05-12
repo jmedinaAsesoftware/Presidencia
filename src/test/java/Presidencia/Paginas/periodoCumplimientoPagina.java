@@ -24,6 +24,13 @@ public class periodoCumplimientoPagina {
 	@FindBy(how = How.XPATH, using = "//input[@name = 'fechaFin']")
 	private WebElement TextoFechaFin;
 
+	@FindBy(how = How.XPATH, using = "//button[@class = 'botonPrincipalAzul']")
+	private WebElement RegistrosAnexos;
+
+	@FindBy(how = How.XPATH, using = "//div[@class ='MuiAlert-message']")
+	private WebElement AlertaLimites;
+
+
 	public periodoCumplimientoPagina(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
@@ -44,6 +51,7 @@ public class periodoCumplimientoPagina {
 		questions.screenShot();
 	}
 
+
 	@Step
 	public void validarArchivos() throws AWTException {
 
@@ -57,5 +65,4 @@ public class periodoCumplimientoPagina {
 		questions.impliciWait();
 		questions.screenShot();
 	}
-
 }

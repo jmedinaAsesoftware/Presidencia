@@ -9,8 +9,10 @@ import org.junit.Assert;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import com.ibm.icu.text.SimpleDateFormat;
 import net.thucydides.core.annotations.Step;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 
@@ -32,7 +34,9 @@ public class preguntas {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		File scr = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String filename = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-		File dest = new File("C:\\Users\\jmedina\\Documents\\Captura\\screenshot" + filename + ".png");
+
+		File dest = new File("C:\\Users\\Asesoftware\\eclipse-workspace\\Captura\\screenshot" + filename + ".png");
+
 		try {
 			FileUtils.copyFile(scr, dest);
 		} catch (IOException e) {
@@ -96,10 +100,17 @@ public class preguntas {
 	}
 
 	@Step
+	public void AsserConfirmacionEliminar() {
+		String mensaje = driver.findElement(By.xpath("//div[@role= 'dialog']//h2[@class = 'MuiTypography-root MuiTypography-h6']")).getText();
+		Assert.assertEquals("¿Está seguro que desea eliminar la denominación?",	mensaje);
+	}
+
+	@Step
 	public void AsserEvaluacionRiesgos() {
 
 		String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
 		Assert.assertEquals("¿Está seguro que desea dejar estos elementos configurados para este periodo?", mensaje);
+
 
 	}
 }
