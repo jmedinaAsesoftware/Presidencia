@@ -22,7 +22,7 @@ Scenario Outline: Editar tipo de riego para el periodo actual (TEST CASE 133035)
 
 	When Editar un tipo de riesgo  nombre a buscar <nombreBuscar> denominado <denominacionP> y descripcion <descripcionP> 
 	Examples: 
-		|nombreBuscar	|denominacionP   |descripcionP	   		|
+		|nombreBuscar	|denominacionP   |descripcionP	 |
 		|echo 1		    |Cambio Q		 |pruebas QA aUTO|   
 		
 @Regresion

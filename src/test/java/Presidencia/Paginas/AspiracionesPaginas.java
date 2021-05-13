@@ -33,6 +33,9 @@ public class AspiracionesPaginas {
 	@FindBy(how = How.XPATH, using = "//input[@name = 'origen']")
 	private WebElement textoOrigen;
 
+	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//h2[@class = 'MuiTypography-root MuiTypography-h6']")
+	private WebElement assertConfirmacionEliminar;
+
 	public AspiracionesPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
@@ -105,6 +108,22 @@ public class AspiracionesPaginas {
 		textoNombre.clear();
 		textoDescripcion.clear();
 		textoOrigen.clear();
+
+	}
+
+	@Step
+	public void btnEliminarAspiracionM(String nombreBuscar) {
+		preguntas.tiempoSegundos(1);
+		preguntas.screenShot();
+		botonesPaginas.btnEliminarAspiracion(nombreBuscar);
+
+		if (assertConfirmacionEliminar != null) {
+			preguntas.screenShot();
+
+		}
+		botonesPaginas.BtnSi();
+		preguntas.impliciWait();
+		preguntas.screenShot();
 
 	}
 

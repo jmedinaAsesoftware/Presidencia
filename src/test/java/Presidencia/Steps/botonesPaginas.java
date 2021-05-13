@@ -200,5 +200,11 @@ public class BotonesPaginas {
 		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscarP + "')]/../../td[7]")).click();
 
 	}
+	
+	public void btnEliminarAspiracion(String nombreBuscar) {
+
+		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscar + "')]/../../td[6]")).click();
+
+	}
 
 }

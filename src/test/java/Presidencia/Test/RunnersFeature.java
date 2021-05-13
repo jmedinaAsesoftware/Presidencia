@@ -6,7 +6,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(features = { "src/test/resources/features" }, glue = { "Presidencia.Definitions" }, tags = {
-		"@Regresion" })
+		"@Regresion1" })
 public class RunnersFeature {
 
 }
