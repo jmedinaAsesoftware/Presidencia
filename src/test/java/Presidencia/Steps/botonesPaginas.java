@@ -1,13 +1,7 @@
 package Presidencia.Steps;
 
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-
 import java.io.File;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,10 +9,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class botonesPaginas {
+public class BotonesPaginas {
 
 	private WebDriver driver;
-	private preguntas questions = new preguntas(driver);
+	private Preguntas questions = new Preguntas(driver);
 
 	@FindBy(how = How.CSS, using = "div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-3 > div > svg")
 	private WebElement BtnPrepararPeriodo;
@@ -71,10 +65,13 @@ public class botonesPaginas {
 	@FindBy(how = How.XPATH, using = "//table//tbody//tr//*[@class = 'border']")
 	private WebElement btnEditarRiesgo;
 
-	public botonesPaginas(WebDriver driver) {
+	@FindBy(how = How.XPATH, using = "//div[@class = 'contenedor']//label[contains(text(), 'Agregar')]")
+	private WebElement btnAgregaMas;
+
+	public BotonesPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
-		this.questions = new preguntas(driver);
+		this.questions = new Preguntas(driver);
 	}
 
 	public void BtnPrepararPeriodo() {
@@ -112,6 +109,7 @@ public class botonesPaginas {
 		String path = file.getAbsolutePath();
 		driver.findElement(By.xpath("//input[@type = 'file']")).sendKeys(path);
 		questions.tiempoSegundos(1);
+		System.out.println(file);
 
 	}
 
@@ -179,6 +177,28 @@ public class botonesPaginas {
 	public void btnPrincipalGuardar() {
 		questions.tiempoSegundos(1);
 		btnPrincipalGuardar.click();
+	}
+
+	public void CargarArchivoMasivo() throws AWTException {
+
+		File file = new File(
+				"C:\\Users\\jmedina\\Documents\\Captura\\DocumentoReferenciaCargueAspiracionesFormato.xlsx");
+		String path = file.getAbsolutePath();
+		driver.findElement(By.xpath("//input[@type = 'file']")).sendKeys(path);
+		questions.tiempoSegundos(1);
+
+	}
+
+	public void btnAgregaMas() {
+		btnAgregaMas.click();
+		questions.impliciWait();
+
+	}
+	
+	public void btnEditarAspiraciones(String nombreBuscarP) {
+
+		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscarP + "')]/../../td[7]")).click();
+
 	}
 
 }

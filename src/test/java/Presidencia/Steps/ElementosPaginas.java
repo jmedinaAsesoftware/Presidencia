@@ -16,8 +16,8 @@ import net.thucydides.core.annotations.Step;
 public class ElementosPaginas {
 	
 	private WebDriver driver;
-	private preguntas preguntas;
-	private botonesPaginas botonesPaginas;
+	private Preguntas preguntas;
+	private BotonesPaginas botonesPaginas;
 	
 	
 	@FindBy(how = How.XPATH, using = "//button[@class = 'botonPrincipalAzul']")
@@ -29,13 +29,13 @@ public class ElementosPaginas {
 	public ElementosPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
-		this.preguntas = new preguntas(driver);
-		this.botonesPaginas = new botonesPaginas(driver);
+		this.preguntas = new Preguntas(driver);
+		this.botonesPaginas = new BotonesPaginas(driver);
 	}
 	
 	@Step
 	public void scrollBajar() {
-		WebElement scroll = driver.findElement(By.xpath("//div[@class ='MuiGrid-root MuiBox-root jss56 MuiGrid-container MuiGrid-justify-xs-space-between']"));
+		WebElement scroll = driver.findElement(By.xpath("//div[@class ='contenedor']"));
 		Actions scrolldown = new Actions(driver);
 		List<WebElement> article = scroll.findElements(By.tagName("button"));
 		scrolldown.moveToElement(article.get(3)).build().perform();
@@ -44,7 +44,7 @@ public class ElementosPaginas {
 	
 	@Step
 	public void ValidarArchivosCargados() throws AWTException {
-
+			
 		botonesPaginas.BtnVerArchivos();
 			
 		if (RegistrosAnexos != null) {
@@ -75,13 +75,22 @@ public class ElementosPaginas {
 			botonesPaginas.BtnSalir();
 		}
 		if(mensaje1.contains("Alerta")) {
-			
+			preguntas.impliciWait();
 			preguntas.screenShot();
 			preguntas.AsserCargaArchivoMaximo();
 			preguntas.impliciWait();
 			
 		}
 	
+	}
+	
+	@Step
+	public void scrollBajarDos() {
+		WebElement scroll = driver.findElement(By.xpath("//div[@class ='pantalla_completa']"));
+		Actions scrolldown = new Actions(driver);
+		List<WebElement> article = scroll.findElements(By.tagName("button"));
+		scrolldown.moveToElement(article.get(3)).build().perform();
+		preguntas.impliciWait();
 	}
 
 }

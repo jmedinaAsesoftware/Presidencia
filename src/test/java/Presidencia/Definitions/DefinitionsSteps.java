@@ -3,6 +3,8 @@ package Presidencia.Definitions;
 import java.awt.AWTException;
 
 import org.openqa.selenium.WebDriver;
+
+import Presidencia.Paginas.AspiracionesPaginas;
 import Presidencia.Paginas.EvaluacionRiesgoPagina;
 import Presidencia.Paginas.periodoCumplimientoPagina;
 import Presidencia.Paginas.tiposRiesgosPagina;
@@ -23,7 +25,7 @@ public class DefinitionsSteps {
 
 	private EvaluacionRiesgoPagina evaluacionRiesgoPagina = new EvaluacionRiesgoPagina(driver);
 	private ElementosPaginas elementosPaginas = new ElementosPaginas(driver);
-
+	private AspiracionesPaginas aspiracionesPaginas = new AspiracionesPaginas(driver);
 
 	@Given("^que se ingreso a la url$")
 	public void abrir_navegador() {
@@ -38,7 +40,6 @@ public class DefinitionsSteps {
 		this.periodoCumplimientoPage.informacioGeneral(FechaInicio, FechaFin);
 	}
 
-
 	@Then("^al hacer clic en guardar se debe almacenar la informacion$")
 	public void validarGuardado() throws AWTException {
 		this.periodoCumplimientoPage = new periodoCumplimientoPagina(driver);
@@ -50,7 +51,6 @@ public class DefinitionsSteps {
 		this.elementosPaginas = new ElementosPaginas(driver);
 		this.elementosPaginas.ValidarArchivosCargados();
 	}
-
 
 	@And("^Se cierra el navegador$")
 	public void CerrarNavegador() {
@@ -78,7 +78,7 @@ public class DefinitionsSteps {
 		this.tiposRiesgosPage.btnEditarRiesgoM(nombreBuscar);
 		this.tiposRiesgosPage.diligenciarTipoRiesgoM(denominacionP, descripcionP);
 	}
-	
+
 	@When("^Eliminar un tipo de riesgo  nombre a buscar (.*)$")
 	public void eliminarTipoRiesgo(String nombreBuscar) {
 		this.tiposRiesgosPage = new tiposRiesgosPagina(driver);
@@ -136,4 +136,39 @@ public class DefinitionsSteps {
 		this.evaluacionRiesgoPagina.guardarM();
 
 	}
+
+	@And("^dirigirse al formulario de registro Aspiraciones$")
+	public void dirigirseRegistroAspiraciones() {
+		this.aspiracionesPaginas = new AspiracionesPaginas(driver);
+		this.aspiracionesPaginas.llegarRegistroAspiracionM();
+	}
+
+	@When("^Se realice el cargue de masivo de aspiraciones$")
+	public void dcargueMasivoAspiraciones() throws AWTException {
+		this.aspiracionesPaginas = new AspiracionesPaginas(driver);
+		this.aspiracionesPaginas.cargarArchivoMasivoM();
+	}
+
+	@When("^agregar registo de aspiraciones$")
+	public void agregarAspiracion() {
+		this.aspiracionesPaginas = new AspiracionesPaginas(driver);
+		this.aspiracionesPaginas.btnAgregarAspiracionesM();
+	}
+
+	@And("^diligenciar nombre (.*) descripcion (.*) origen (.*) sector (.*)$")
+	public void diligenciarAspiraciones(String nombreP, String descripcionP, String origenP, String sectorP) {
+		this.aspiracionesPaginas = new AspiracionesPaginas(driver);
+		this.aspiracionesPaginas.diligenciarFormularioM(nombreP, descripcionP, origenP, sectorP);
+
+	}
+	
+	@When("^edite nombre a buscar (.*) nombre (.*) descripcion (.*) origen (.*) sector (.*)$")
+	public void editarAspiraciones(String nombreBuscarP, String nombreP, String descripcionP, String origenP, String sectorP) {
+		this.aspiracionesPaginas = new AspiracionesPaginas(driver);
+		this.aspiracionesPaginas.btnEditarAspiracionM(nombreBuscarP);
+		this.aspiracionesPaginas.limpiarCamposM();
+		this.aspiracionesPaginas.diligenciarFormularioM( nombreP, descripcionP, origenP, sectorP);
+
+	}
+	
 }
