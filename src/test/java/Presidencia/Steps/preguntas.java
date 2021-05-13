@@ -16,11 +16,11 @@ import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 
-public class preguntas {
+public class Preguntas {
 
 	private WebDriver driver;
 
-	public preguntas(WebDriver driver) {
+	public Preguntas(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -35,7 +35,7 @@ public class preguntas {
 		File scr = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String filename = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 
-		File dest = new File("C:\\Users\\Asesoftware\\eclipse-workspace\\Captura\\screenshot" + filename + ".png");
+		File dest = new File("C:\\Users\\jmedina\\Documents\\Captura\\screenshot" + filename + ".png");
 
 		try {
 			FileUtils.copyFile(scr, dest);
@@ -66,13 +66,14 @@ public class preguntas {
 
 	@Step
 	public void AsserCargaArchivoMaximo() {
-		String mensaje = driver.findElement(By.xpath("//div[contains(text(),'Límite de archivos a anexar 5')]"))
+		String mensaje = driver.findElement(By.xpath("//*[@id=\"content-app\"]/div/div[2]/div/div/div/div[2]/div/div[2]/div"))
 				.getText();
 		System.out.println(mensaje);
 		Assert.assertEquals("Alerta\n" + "Límite de archivos a anexar 5", mensaje);
 
 	}
-
+	//div[contains(text(),'Límite de archivos a anexar 5')]
+	
 	@Step
 	public void AsserGuardarCumpliento() {
 
@@ -101,8 +102,10 @@ public class preguntas {
 
 	@Step
 	public void AsserConfirmacionEliminar() {
-		String mensaje = driver.findElement(By.xpath("//div[@role= 'dialog']//h2[@class = 'MuiTypography-root MuiTypography-h6']")).getText();
-		Assert.assertEquals("¿Está seguro que desea eliminar la denominación?",	mensaje);
+		String mensaje = driver
+				.findElement(By.xpath("//div[@role= 'dialog']//h2[@class = 'MuiTypography-root MuiTypography-h6']"))
+				.getText();
+		Assert.assertEquals("¿Está seguro que desea eliminar la denominación?", mensaje);
 	}
 
 	@Step
@@ -110,7 +113,6 @@ public class preguntas {
 
 		String mensaje = driver.findElement(By.xpath("//div[@id = 'alert-dialog-title']//h2")).getText();
 		Assert.assertEquals("¿Está seguro que desea dejar estos elementos configurados para este periodo?", mensaje);
-
 
 	}
 }

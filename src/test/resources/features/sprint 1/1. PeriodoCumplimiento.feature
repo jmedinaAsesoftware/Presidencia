@@ -1,10 +1,9 @@
 #30/04/2020
 #Jhonatan Medina Blanco
-
-@Regresion 
-Feature: Registro del Período para la Gestión del Cumplimiento. Hu(007) (USER STORY 131817) 
+Feature: Cumplimiento Hu(007) (USER STORY 131817) 
 Background: 
-	Given que se ingreso a la url 
+	Given que se ingreso a la url
+@Regresion
 Scenario Outline: Registro del Período para la Gestión del Cumplimiento (132981) 
 
 	When Se consulte la fecha inicio <FechaInicio> y fecha fin <FechaFin> 

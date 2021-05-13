@@ -7,16 +7,16 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import Presidencia.Steps.ElementosPaginas;
-import Presidencia.Steps.botonesPaginas;
-import Presidencia.Steps.preguntas;
+import Presidencia.Steps.BotonesPaginas;
+import Presidencia.Steps.Preguntas;
 import net.thucydides.core.annotations.Step;
 
 public class EvaluacionRiesgoPagina {
 
 	private WebDriver driver;
 	private tiposRiesgosPagina tiposRiesgosPagina;
-	private botonesPaginas botonesPaginas;
-	private preguntas preguntas;
+	private BotonesPaginas botonesPaginas;
+	private Preguntas preguntas;
 	private ElementosPaginas elementosPaginas;
 
 	@FindBy(how = How.NAME, using = "Impacto en el cumplimiento.Nivel 01.escala")
@@ -83,8 +83,8 @@ public class EvaluacionRiesgoPagina {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 		this.tiposRiesgosPagina = new tiposRiesgosPagina(driver);
-		this.botonesPaginas = new botonesPaginas(driver);
-		this.preguntas = new preguntas(driver);
+		this.botonesPaginas = new BotonesPaginas(driver);
+		this.preguntas = new Preguntas(driver);
 		this.elementosPaginas = new ElementosPaginas(driver);
 
 	}
@@ -143,7 +143,7 @@ public class EvaluacionRiesgoPagina {
 
 	@Step
 	public void limpiarCamposProbabilidad() {
-		elementosPaginas.scrollBajar();
+		elementosPaginas.scrollBajarDos();
 		preguntas.screenShot();
 		preguntas.tiempoSegundos(1);
 		preguntas.impliciWait();
