@@ -2,6 +2,7 @@ package Presidencia.Steps;
 
 import java.awt.AWTException;
 import java.io.File;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class BotonesPaginas {
+
 
 	private WebDriver driver;
 	private Preguntas questions = new Preguntas(driver);
