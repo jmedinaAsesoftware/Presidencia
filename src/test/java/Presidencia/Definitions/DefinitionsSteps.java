@@ -171,4 +171,10 @@ public class DefinitionsSteps {
 
 	}
 	
+	@When("^Eliminar aspiracion nombre a buscar (.*)$")
+	public void eliminarAspiracion(String nombreBuscar) {
+		this.aspiracionesPaginas = new AspiracionesPaginas(driver);
+		this.aspiracionesPaginas.btnEliminarAspiracionM(nombreBuscar);
+
+	}
 }

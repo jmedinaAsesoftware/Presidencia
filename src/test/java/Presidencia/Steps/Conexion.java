@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import cucumber.api.java.Before;
 import net.thucydides.core.annotations.Step;
+import java.util.List;
 
 public class Conexion {
 
@@ -13,6 +14,7 @@ public class Conexion {
 	@Before
 	@Step
 	public WebDriver abrirNavegador() {
+
 		System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -21,13 +23,11 @@ public class Conexion {
 		return this.driver;
 
 	}
-	
-	
+
 	@Step
-	public void CerrarNavegadorWer( WebDriver driver) {
-		
+	public void CerrarNavegadorWer(WebDriver driver) {
+
 		driver.close();
-		
 
 	}
 
