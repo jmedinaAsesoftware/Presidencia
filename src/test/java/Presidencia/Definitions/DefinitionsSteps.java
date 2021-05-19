@@ -4,6 +4,7 @@ import java.awt.AWTException;
 
 import org.openqa.selenium.WebDriver;
 
+import Presidencia.Paginas.AsignacionResponsablesPaginas;
 import Presidencia.Paginas.AspiracionesPaginas;
 import Presidencia.Paginas.EvaluacionRiesgoPagina;
 import Presidencia.Paginas.periodoCumplimientoPagina;
@@ -26,6 +27,7 @@ public class DefinitionsSteps {
 	private EvaluacionRiesgoPagina evaluacionRiesgoPagina = new EvaluacionRiesgoPagina(driver);
 	private ElementosPaginas elementosPaginas = new ElementosPaginas(driver);
 	private AspiracionesPaginas aspiracionesPaginas = new AspiracionesPaginas(driver);
+	private AsignacionResponsablesPaginas asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
 
 	@Given("^que se ingreso a la url$")
 	public void abrir_navegador() {
@@ -177,4 +179,26 @@ public class DefinitionsSteps {
 		this.aspiracionesPaginas.btnEliminarAspiracionM(nombreBuscar);
 
 	}
+	
+	@When("^Llegue a la opcion asignar responsables$")
+	public void llegarAsignar() {
+	this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
+	this.asignacionResponsablesPaginas.llegarAsignarM();
+		
+	}
+	
+	@And("^buscar categoria  y objetivo (.*) y hacer clic en e boton Mas$")
+	public void agregaResponsable(String buscarCategoria) {
+		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
+		this.asignacionResponsablesPaginas.agregarResponsableM( buscarCategoria);
+
+	}
+	
+	@Then("^se valida si ya hay un lider (.*)$")
+	public void agregarLider(String nombreP) {
+		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);	
+		this.asignacionResponsablesPaginas.agregarLiderM(nombreP);
+		this.asignacionResponsablesPaginas.guardarM();
+	}
+	
 }

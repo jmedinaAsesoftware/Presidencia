@@ -66,14 +66,14 @@ public class Preguntas {
 
 	@Step
 	public void AsserCargaArchivoMaximo() {
-		String mensaje = driver.findElement(By.xpath("//*[@id=\"content-app\"]/div/div[2]/div/div/div/div[2]/div/div[2]/div"))
+		String mensaje = driver
+				.findElement(By.xpath("//*[@id=\"content-app\"]/div/div[2]/div/div/div/div[2]/div/div[2]/div"))
 				.getText();
 		System.out.println(mensaje);
 		Assert.assertEquals("Alerta\n" + "Límite de archivos a anexar 5", mensaje);
 
 	}
-	//div[contains(text(),'Límite de archivos a anexar 5')]
-	
+
 	@Step
 	public void AsserGuardarCumpliento() {
 
@@ -115,4 +115,12 @@ public class Preguntas {
 		Assert.assertEquals("¿Está seguro que desea dejar estos elementos configurados para este periodo?", mensaje);
 
 	}
+
+	@Step
+	public void AsserMensajeExitoso() {
+		String mensaje = driver.findElement(By.xpath("//div[@role = 'alert']")).getText();
+		Assert.assertEquals("Éxito\n" + "Acción realizada con éxito", mensaje);
+
+	}
+
 }
