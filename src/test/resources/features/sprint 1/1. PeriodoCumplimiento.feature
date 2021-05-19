@@ -14,6 +14,6 @@ Scenario Outline: Registro del Período para la Gestión del Cumplimiento (13298
 	
 	Examples: 
 		|FechaInicio|FechaFin	|
-		|22/05/2022 |22/10/2022 |
+		|22/06/2021 |22/10/2021 |
 		|22/05/2023 |22/10/2023 |
 	

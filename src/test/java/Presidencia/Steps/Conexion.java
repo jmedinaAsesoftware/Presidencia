@@ -1,6 +1,8 @@
 package Presidencia.Steps;
 
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import cucumber.api.java.Before;
@@ -17,6 +19,7 @@ public class Conexion {
 
 		System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
 		driver = new ChromeDriver();
+		//driver.manage().window().setSize(new Dimension(411,731));
 		driver.manage().window().maximize();
 		driver.navigate().to("https://fabricaeyfront.azurewebsites.net/");
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

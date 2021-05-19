@@ -10,7 +10,7 @@ Scenario: cargar archivo de aspiraciones (134788)
 	When Se realice el cargue de masivo de aspiraciones 
 	And Se cierra el navegador 
 	
-@Regresion1 
+@Regresion
 Scenario Outline: : agregar aspiraciones (133039) 
 #And se debe anexar documentos y ver archivos cargados 
 	When agregar registo de aspiraciones 
@@ -18,7 +18,7 @@ Scenario Outline: : agregar aspiraciones (133039)
 	And Se cierra el navegador 
 	Examples: 
 		|nombreP		|descripcionP |origenP|sectorP	 |
-		|Prueba integra	|ejecucions	  |QA	  |Sector - 2|
+		|prueba regresion dos	|ejecucions	  |QA	  |Sector - 2|
 		
 		@Regresion 
 		Scenario Outline: Editar Aspiraciones (134784) 
@@ -28,7 +28,7 @@ Scenario Outline: : agregar aspiraciones (133039)
 			And Se cierra el navegador 
 			Examples: 
 				|nombreBuscarP		 |nombreP					|descripcionP |origenP|sectorP	 |
-				|Salud automatizacion|Pruebas Automatizadas		|ejecucions	  |QA	  |Sector - 2|
+				|prueba regresion	|Pruebas Automatizadas		|ejecucions	  |QA	  |Sector - 2|
 				
 				
 				@Regresion
@@ -37,6 +37,6 @@ Scenario Outline: : agregar aspiraciones (133039)
 					
 						Examples: 
 						|nombreBuscar|
-						|oilk|
+						|Pruebas Automatizadas	|
 						
 		

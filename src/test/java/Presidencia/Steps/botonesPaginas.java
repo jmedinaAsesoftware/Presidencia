@@ -2,16 +2,17 @@ package Presidencia.Steps;
 
 import java.awt.AWTException;
 import java.io.File;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class BotonesPaginas {
-
 
 	private WebDriver driver;
 	private Preguntas questions = new Preguntas(driver);
@@ -37,7 +38,7 @@ public class BotonesPaginas {
 	@FindBy(how = How.XPATH, using = "//div//button[contains(text(),'Guardar')]")
 	private WebElement btnPrincipalGuardar;
 
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Si')]")
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Sí')]")
 	private WebElement BtnSi;
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Continuar')]")
@@ -70,6 +71,18 @@ public class BotonesPaginas {
 	@FindBy(how = How.XPATH, using = "//div[@class = 'contenedor']//label[contains(text(), 'Agregar')]")
 	private WebElement btnAgregaMas;
 
+	@FindBy(how = How.XPATH, using = "//button[@aria-label = 'menu']")
+	private WebElement btnMenu;
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Asignación responsables')]")
+	private WebElement btnAsignacionResponsable;
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Agregar actores')]")
+	private WebElement btnAgregarActores;
+	
+	@FindBy(how = How.XPATH, using = "//label[contains(text(), 'Agregar líder')]")
+	private WebElement btnAgregarLider;
+	
 	public BotonesPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
@@ -122,14 +135,13 @@ public class BotonesPaginas {
 	}
 
 	public void BtnSi() {
+	
+		questions.impliciWait();
+		BtnSi.isDisplayed();
 		BtnSi.click();
 		questions.impliciWait();
-
-	}
-
-	public void BtnNo() {
-		BtnSi.click();
-		questions.impliciWait();
+		questions.screenShot();
+		
 
 	}
 
@@ -179,6 +191,8 @@ public class BotonesPaginas {
 	public void btnPrincipalGuardar() {
 		questions.tiempoSegundos(1);
 		btnPrincipalGuardar.click();
+		btnPrincipalGuardar.isDisplayed();
+		questions.screenShot();
 	}
 
 	public void CargarArchivoMasivo() throws AWTException {
@@ -196,17 +210,58 @@ public class BotonesPaginas {
 		questions.impliciWait();
 
 	}
-	
+
 	public void btnEditarAspiraciones(String nombreBuscarP) {
 
 		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscarP + "')]/../../td[7]")).click();
 
 	}
-	
+
 	public void btnEliminarAspiracion(String nombreBuscar) {
 
 		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscar + "')]/../../td[6]")).click();
 
 	}
 
+	public void btnMenu() {
+		questions.impliciWait();
+		btnMenu.isDisplayed();
+		btnMenu.click();
+	}
+
+	public void btnAsignacionResponsable() {
+		questions.impliciWait();
+		btnAsignacionResponsable.isDisplayed();
+		questions.screenShot();
+		btnAsignacionResponsable.click();
+		questions.tiempoSegundos(1);
+	}
+
+	public void btnAgregarResponsable(String buscarObjetivoP) {
+
+		WebElement objetivo = driver
+				.findElement(By.xpath("//td[contains(text(),'" + buscarObjetivoP + "')]/../td[5]/div/div[3]"));
+		questions.tiempoSegundos(1);
+		Actions scrolldown = new Actions(driver);
+		scrolldown.moveToElement(objetivo).build().perform();
+		questions.screenShot();
+		questions.impliciWait();
+		objetivo.click();
+		questions.screenShot();
+
+	}
+
+	public void btnAgregarActores() {
+		questions.impliciWait();
+		btnAgregarActores.isDisplayed();
+		questions.screenShot();
+		btnAgregarActores.click();
+	}
+	
+	public void btnAgregarLider() {
+		questions.impliciWait();
+		btnAgregarLider.isDisplayed();
+		questions.screenShot();
+		btnAgregarLider.click();
+	}
 }
