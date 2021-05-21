@@ -2,12 +2,11 @@ package Presidencia.Steps;
 
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import cucumber.api.java.Before;
 import net.thucydides.core.annotations.Step;
-import java.util.List;
+
 
 public class Conexion {
 
