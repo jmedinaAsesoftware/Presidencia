@@ -5,7 +5,7 @@ Background:
 	Given que se ingreso a la url 
 	When Llegue a la opcion asignar responsables 
 	
-@Regresion1 
+@Regresion 
 Scenario Outline: Asignación de responsable Líder Cumplimiento. TEST CASE 136670 
 
 	And Buscar categoria y objetivo <buscarObjetivoP> y hacer clic en boton Mas 

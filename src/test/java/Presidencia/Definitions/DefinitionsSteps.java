@@ -9,6 +9,7 @@ import Presidencia.Paginas.AspiracionesPaginas;
 import Presidencia.Paginas.EvaluacionRiesgoPagina;
 import Presidencia.Paginas.periodoCumplimientoPagina;
 import Presidencia.Paginas.tiposRiesgosPagina;
+import Presidencia.Paginas.CreacionProductoPagina;
 import Presidencia.Steps.Conexion;
 import Presidencia.Steps.ElementosPaginas;
 import cucumber.api.java.en.And;
@@ -23,6 +24,7 @@ public class DefinitionsSteps {
 	private Conexion conexion = new Conexion();
 	private periodoCumplimientoPagina periodoCumplimientoPage = new periodoCumplimientoPagina(driver);
 	private tiposRiesgosPagina tiposRiesgosPage = new tiposRiesgosPagina(driver);
+	private CreacionProductoPagina creacionproductoPage = new CreacionProductoPagina(driver);
 
 	private EvaluacionRiesgoPagina evaluacionRiesgoPagina = new EvaluacionRiesgoPagina(driver);
 	private ElementosPaginas elementosPaginas = new ElementosPaginas(driver);
@@ -181,6 +183,7 @@ public class DefinitionsSteps {
 
 	}
 
+
 	@When("^Llegue a la opcion asignar responsables$")
 	public void llegarAsignar() {
 		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
@@ -214,4 +217,73 @@ public class DefinitionsSteps {
 		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
 		this.asignacionResponsablesPaginas.consultarResponsableM(buscarObjetivoP);
 	}
+	
+	@And("^dirigirse a la pantalla de creacion de producto$")
+	public void DirigirCreacionProducto() {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.crearProductoM();
+	}
+	
+	@When("^Seleccione categoria (.*) y objetivos (.*)$")
+	public void seleccionarOpciones(String categoriaP, String objetivoP) {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.CategoriaM(categoriaP);
+		this.creacionproductoPage.ObjetivoM(objetivoP);
+	}
+	
+	@And("^seleccionar boton Crear producto$")
+	public void CrearProducto() {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.btncrearProductoM();
+	}
+	
+	@And("^seleccionar boton continuar$")
+	public void Continuar() {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.btncontinuarM();
+	}
+	
+	@And("^Diligenciar campos Nombre Producto (.*) y Descripcion Producto (.*)$")
+	public void diligenciarProducto(String NombreProducto, String DescProducto) {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.DiligenciarProductoM(NombreProducto,DescProducto);
+	}
+	
+	@And("^Seleccionar opcion Agregar otro dueno de producto$")
+	public void SeleccionarDuenoProducto() {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.selDuenoProductoM();
+	}
+	
+	@And("^diligenciar dueno del producto (.*)$")
+	public void diligenciarDuenoProducto(String DuenoProducto) {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.DiligenciarDuenoProductoM(DuenoProducto);
+	}
+	
+	@And("^Seleccionar opcion Agregar otros actores$")
+	public void SeleccionarActores() {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.selActoresM();
+	}
+	
+	@And("^diligenciar nombre del actor (.*)$")
+	public void diligenciarActorProducto(String ActorProducto) {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.DiligenciarActorProductoM(ActorProducto);
+	}
+	@And("^seleccionar boton guardar$")
+	public void SeleccionarbtnGuardar() {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.seleccionarbtnGuardarM();
+	}
+	
+	@And("^seleccionar boton continuar creacion producto$")
+	public void SeleccionarbtnContinuar() {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.seleccionarbtnContinuarM();
+	}
+	
+	
+
 }

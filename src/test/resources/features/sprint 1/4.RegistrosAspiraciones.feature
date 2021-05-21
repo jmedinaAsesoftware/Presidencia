@@ -10,7 +10,7 @@ Scenario: cargar archivo de aspiraciones (134788)
 	When Se realice el cargue de masivo de aspiraciones 
 	And Se cierra el navegador 
 	
-@Regresion
+@Regresion 
 Scenario Outline: : agregar aspiraciones (133039) 
 #And se debe anexar documentos y ver archivos cargados 
 	When agregar registo de aspiraciones 
