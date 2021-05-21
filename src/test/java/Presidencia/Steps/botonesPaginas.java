@@ -2,8 +2,6 @@ package Presidencia.Steps;
 
 import java.awt.AWTException;
 import java.io.File;
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -139,7 +137,7 @@ public class BotonesPaginas {
 		questions.impliciWait();
 		BtnSi.isDisplayed();
 		BtnSi.click();
-		questions.impliciWait();
+		questions.tiempoSegundos(1);
 		questions.screenShot();
 		
 
@@ -192,6 +190,7 @@ public class BotonesPaginas {
 		questions.tiempoSegundos(1);
 		btnPrincipalGuardar.click();
 		btnPrincipalGuardar.isDisplayed();
+		questions.impliciWait();
 		questions.screenShot();
 	}
 
@@ -263,5 +262,19 @@ public class BotonesPaginas {
 		btnAgregarLider.isDisplayed();
 		questions.screenShot();
 		btnAgregarLider.click();
+	}
+	
+	public void btnConsuResponsable(String buscarObjetivoP) {
+
+		WebElement objetivo = driver
+				.findElement(By.xpath("//td[contains(text(),'" + buscarObjetivoP + "')]/../td[5]/div/div[2]"));
+		questions.tiempoSegundos(1);
+		Actions scrolldown = new Actions(driver);
+		scrolldown.moveToElement(objetivo).build().perform();
+		questions.screenShot();
+		questions.impliciWait();
+		objetivo.click();
+		questions.screenShot();
+
 	}
 }

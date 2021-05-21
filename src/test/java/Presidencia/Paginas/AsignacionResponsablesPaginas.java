@@ -1,7 +1,5 @@
 package Presidencia.Paginas;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,12 +20,15 @@ public class AsignacionResponsablesPaginas {
 	@FindBy(how = How.XPATH, using = "//input[@placeholder = 'Nombre']")
 	private WebElement textoNombre;
 
+	@FindBy(how = How.XPATH, using = "//input[@name = 'personas[0].rolCumplimiento']")
+	private WebElement textoRolCumplimiento;
+
 	public AsignacionResponsablesPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 		this.botonesPaginas = new BotonesPaginas(driver);
 		this.preguntas = new Preguntas(driver);
-	
+
 	}
 
 	@Step
@@ -46,12 +47,21 @@ public class AsignacionResponsablesPaginas {
 	}
 
 	@Step
-	public void agregarLiderM(String nombreP) {
-
+	public void consultarResponsableM(String buscarObjetivoP) {
+		preguntas.impliciWait();
+		botonesPaginas.btnConsuResponsable(buscarObjetivoP);
 		preguntas.impliciWait();
 		preguntas.screenShot();
+
+	}
+
+	@Step
+	public void agregarLiderM(String nombreP) {
+
+		preguntas.screenShot();
+		preguntas.tiempoSegundos(1);
 		textoNombre.sendKeys(nombreP);
-		preguntas.impliciWait();
+		preguntas.tiempoSegundos(1);
 		textoNombre.sendKeys(Keys.ARROW_DOWN);
 		preguntas.impliciWait();
 		textoNombre.sendKeys(Keys.ENTER);
@@ -66,5 +76,26 @@ public class AsignacionResponsablesPaginas {
 		botonesPaginas.BtnSi();
 		preguntas.tiempoSegundos(1);
 		preguntas.AsserMensajeExitoso();
+	}
+
+	@Step
+	public void agregarActoresM(String nombreP, String rolCumplimiento) {
+
+		botonesPaginas.btnAgregarActores();
+		preguntas.impliciWait();
+		preguntas.screenShot();
+		textoNombre.sendKeys(nombreP);
+		preguntas.impliciWait();
+		textoNombre.sendKeys(Keys.ARROW_DOWN);
+		preguntas.impliciWait();
+		textoNombre.sendKeys(Keys.ENTER);
+		preguntas.impliciWait();
+		textoRolCumplimiento.sendKeys(rolCumplimiento);
+		textoRolCumplimiento.sendKeys(Keys.ARROW_DOWN);
+		preguntas.impliciWait();
+		textoRolCumplimiento.sendKeys(Keys.ENTER);
+		preguntas.impliciWait();
+		preguntas.screenShot();
+
 	}
 }

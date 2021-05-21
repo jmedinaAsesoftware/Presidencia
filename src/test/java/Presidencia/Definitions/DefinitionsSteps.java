@@ -163,42 +163,55 @@ public class DefinitionsSteps {
 		this.aspiracionesPaginas.diligenciarFormularioM(nombreP, descripcionP, origenP, sectorP);
 
 	}
-	
+
 	@When("^edite nombre a buscar (.*) nombre (.*) descripcion (.*) origen (.*) sector (.*)$")
-	public void editarAspiraciones(String nombreBuscarP, String nombreP, String descripcionP, String origenP, String sectorP) {
+	public void editarAspiraciones(String nombreBuscarP, String nombreP, String descripcionP, String origenP,
+			String sectorP) {
 		this.aspiracionesPaginas = new AspiracionesPaginas(driver);
 		this.aspiracionesPaginas.btnEditarAspiracionM(nombreBuscarP);
 		this.aspiracionesPaginas.limpiarCamposM();
-		this.aspiracionesPaginas.diligenciarFormularioM( nombreP, descripcionP, origenP, sectorP);
+		this.aspiracionesPaginas.diligenciarFormularioM(nombreP, descripcionP, origenP, sectorP);
 
 	}
-	
+
 	@When("^Eliminar aspiracion nombre a buscar (.*)$")
 	public void eliminarAspiracion(String nombreBuscar) {
 		this.aspiracionesPaginas = new AspiracionesPaginas(driver);
 		this.aspiracionesPaginas.btnEliminarAspiracionM(nombreBuscar);
 
 	}
-	
+
 	@When("^Llegue a la opcion asignar responsables$")
 	public void llegarAsignar() {
-	this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
-	this.asignacionResponsablesPaginas.llegarAsignarM();
-		
-	}
-	
-	@And("^buscar categoria  y objetivo (.*) y hacer clic en e boton Mas$")
-	public void agregaResponsable(String buscarCategoria) {
 		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
-		this.asignacionResponsablesPaginas.agregarResponsableM( buscarCategoria);
+		this.asignacionResponsablesPaginas.llegarAsignarM();
 
 	}
-	
-	@Then("^se valida si ya hay un lider (.*)$")
+
+	@And("^Buscar categoria y objetivo (.*) y hacer clic en boton Mas$")
+	public void agregaResponsable(String buscarCategoria) {
+		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
+		this.asignacionResponsablesPaginas.agregarResponsableM(buscarCategoria);
+
+	}
+
+	@Then("^Se agregue un lider (.*)$")
 	public void agregarLider(String nombreP) {
-		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);	
+		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
 		this.asignacionResponsablesPaginas.agregarLiderM(nombreP);
 		this.asignacionResponsablesPaginas.guardarM();
 	}
-	
+
+	@Then("^Se agregue un actor (.*) y rol (.*)$")
+	public void agregarActor(String nombreP, String rolCumplimiento) {
+		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
+		this.asignacionResponsablesPaginas.agregarActoresM(nombreP, rolCumplimiento);
+		this.asignacionResponsablesPaginas.guardarM();
+	}
+
+	@Then("^Buscar categoria y objetivo (.*) y hacer clic en editar$")
+	public void consultarResponsables(String buscarObjetivoP) {
+		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
+		this.asignacionResponsablesPaginas.consultarResponsableM(buscarObjetivoP);
+	}
 }
