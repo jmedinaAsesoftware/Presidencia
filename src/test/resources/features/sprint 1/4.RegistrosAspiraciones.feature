@@ -12,15 +12,15 @@ Scenario: cargar archivo de aspiraciones (134788)
 	
 @Regresion 
 Scenario Outline: : agregar aspiraciones (133039) 
-#And se debe anexar documentos y ver archivos cargados 
+
 	When agregar registo de aspiraciones 
 	And diligenciar nombre <nombreP> descripcion <descripcionP> origen <origenP> sector <sectorP> 
 	And Se cierra el navegador 
 	Examples: 
-		|nombreP		|descripcionP |origenP|sectorP	 |
+		|nombreP				|descripcionP |origenP|sectorP	 |
 		|prueba regresion dos	|ejecucions	  |QA	  |Sector - 2|
 		
-		@Regresion 
+		@Regresion
 		Scenario Outline: Editar Aspiraciones (134784) 
 		
 			When edite nombre a buscar <nombreBuscarP> nombre <nombreP> descripcion <descripcionP> origen <origenP> sector <sectorP> 
@@ -28,7 +28,7 @@ Scenario Outline: : agregar aspiraciones (133039)
 			And Se cierra el navegador 
 			Examples: 
 				|nombreBuscarP		 |nombreP					|descripcionP |origenP|sectorP	 |
-				|prueba regresion	|Pruebas Automatizadas		|ejecucions	  |QA	  |Sector - 2|
+				|Salud automatizacion|Pruebas Automatizadas		|ejecucions	  |QA	  |Sector - 2|
 				
 				
 				@Regresion

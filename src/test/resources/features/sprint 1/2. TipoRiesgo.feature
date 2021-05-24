@@ -38,4 +38,4 @@ Scenario Outline: Eliminar un tipo de riesgo  nombre a buscar (TEST CASE 133035)
 	Examples: 
 		|nombreBuscar	 |
 		|Prueba Jorge Update 1|  
-		|Prueba QA     |
+		|Prueba Auotmatizacion     |

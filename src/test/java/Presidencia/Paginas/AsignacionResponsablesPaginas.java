@@ -57,7 +57,7 @@ public class AsignacionResponsablesPaginas {
 
 	@Step
 	public void agregarLiderM(String nombreP) {
-
+		preguntas.tiempoSegundos(1);
 		preguntas.screenShot();
 		preguntas.tiempoSegundos(1);
 		textoNombre.sendKeys(nombreP);
@@ -79,7 +79,15 @@ public class AsignacionResponsablesPaginas {
 	}
 
 	@Step
-	public void agregarActoresM(String nombreP, String rolCumplimiento) {
+	public void continuarM() {
+		botonesPaginas.BtnContinuar();
+		botonesPaginas.btnDiagContinuar();
+		preguntas.tiempoSegundos(1);
+		preguntas.AsserMensajeExitoso();
+	}
+
+	@Step
+	public void agregarActoresM(String nombreP, String rolCumplimientoP) {
 
 		botonesPaginas.btnAgregarActores();
 		preguntas.impliciWait();
@@ -90,12 +98,26 @@ public class AsignacionResponsablesPaginas {
 		preguntas.impliciWait();
 		textoNombre.sendKeys(Keys.ENTER);
 		preguntas.impliciWait();
-		textoRolCumplimiento.sendKeys(rolCumplimiento);
+		textoRolCumplimiento.sendKeys(rolCumplimientoP);
 		textoRolCumplimiento.sendKeys(Keys.ARROW_DOWN);
 		preguntas.impliciWait();
 		textoRolCumplimiento.sendKeys(Keys.ENTER);
 		preguntas.impliciWait();
 		preguntas.screenShot();
 
+	}
+
+	@Step
+	public void editarResponsableM(String buscarNombreP, String rolCumplimientoP) {
+		botonesPaginas.btneditarResponsables(buscarNombreP);
+		textoRolCumplimiento.clear();
+		textoRolCumplimiento.sendKeys(rolCumplimientoP);
+		preguntas.screenShot();
+
+	}
+
+	@Step
+	public void eliminarResponsableM(String buscarNombreP) {
+		botonesPaginas.btnEliminarResponsables(buscarNombreP);
 	}
 }

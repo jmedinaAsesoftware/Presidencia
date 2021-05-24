@@ -24,13 +24,13 @@ public class AspiracionesPaginas {
 	private ElementosPaginas elementosPaginas;
 	private ListasDesplegablesPaginas listasDesplegablesPaginas;
 
-	@FindBy(how = How.XPATH, using = "//input[@name = 'nombre']")
+	@FindBy(how = How.XPATH, using = "//textarea[@name = 'nombre']")
 	private WebElement textoNombre;
 
-	@FindBy(how = How.XPATH, using = "//input[@name = 'descripcion']")
+	@FindBy(how = How.XPATH, using = "//textarea[@name = 'descripcion']")
 	private WebElement textoDescripcion;
 
-	@FindBy(how = How.XPATH, using = "//input[@name = 'origen']")
+	@FindBy(how = How.XPATH, using = "//textarea[@name = 'origen']")
 	private WebElement textoOrigen;
 
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//h2[@class = 'MuiTypography-root MuiTypography-h6']")
