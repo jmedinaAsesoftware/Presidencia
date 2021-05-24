@@ -203,15 +203,31 @@ public class DefinitionsSteps {
 	}
 
 	@Then("^Se agregue un actor (.*) y rol (.*)$")
-	public void agregarActor(String nombreP, String rolCumplimiento) {
+	public void agregarActor(String nombreP, String rolCumplimientoP) {
 		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
-		this.asignacionResponsablesPaginas.agregarActoresM(nombreP, rolCumplimiento);
+		this.asignacionResponsablesPaginas.agregarActoresM(nombreP, rolCumplimientoP);
 		this.asignacionResponsablesPaginas.guardarM();
 	}
 
 	@Then("^Buscar categoria y objetivo (.*) y hacer clic en editar$")
 	public void consultarResponsables(String buscarObjetivoP) {
 		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
+		this.asignacionResponsablesPaginas.consultarResponsableM(buscarObjetivoP);
+	}
+	
+	@And("^Al seleccionar el nombre (.*) para editar el rol (.*) se confimar la actualizacion (.*)$")
+	public void editarRolResponsable(String buscarNombreP, String rolCumplimientoP, String buscarObjetivoP) {
+		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
+		this.asignacionResponsablesPaginas.editarResponsableM(buscarNombreP, rolCumplimientoP);
+		this.asignacionResponsablesPaginas.guardarM();
+		this.asignacionResponsablesPaginas.continuarM();
+		this.asignacionResponsablesPaginas.consultarResponsableM(buscarObjetivoP);
+	}
+	
+	@And("^Al seleccionar el nombre (.*) para eliminar el responsable se confimar la eliminacion (.*)$")
+	public void eliminarRolResponsable(String buscarNombreP, String buscarObjetivoP) {
+		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
+		this.asignacionResponsablesPaginas.eliminarResponsableM(buscarNombreP);
 		this.asignacionResponsablesPaginas.consultarResponsableM(buscarObjetivoP);
 	}
 }
