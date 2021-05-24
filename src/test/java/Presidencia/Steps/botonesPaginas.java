@@ -36,8 +36,8 @@ public class BotonesPaginas {
 	@FindBy(how = How.XPATH, using = "//div//button[contains(text(),'Guardar')]")
 	private WebElement btnPrincipalGuardar;
 
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Sí')]")
-	private WebElement BtnSi;
+//	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Sí')]")
+//private WebElement BtnSi;
 
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Continuar')]")
 	private WebElement BtnContinuar;
@@ -61,7 +61,7 @@ public class BotonesPaginas {
 	private WebElement btnNo;
 
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//button[@class='botonPrincipalAzul']")
-	private WebElement btnSi;
+	private WebElement BtnSi;
 
 	@FindBy(how = How.XPATH, using = "//table//tbody//tr//*[@class = 'border']")
 	private WebElement btnEditarRiesgo;
@@ -74,13 +74,13 @@ public class BotonesPaginas {
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(), 'Asignación responsables')]")
 	private WebElement btnAsignacionResponsable;
-	
+
 	@FindBy(how = How.XPATH, using = "//button[contains(text(), 'Agregar actores')]")
 	private WebElement btnAgregarActores;
-	
+
 	@FindBy(how = How.XPATH, using = "//label[contains(text(), 'Agregar líder')]")
 	private WebElement btnAgregarLider;
-	
+
 	public BotonesPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
@@ -133,13 +133,12 @@ public class BotonesPaginas {
 	}
 
 	public void BtnSi() {
-	
+
 		questions.impliciWait();
 		BtnSi.isDisplayed();
 		BtnSi.click();
 		questions.tiempoSegundos(1);
 		questions.screenShot();
-		
 
 	}
 
@@ -256,18 +255,46 @@ public class BotonesPaginas {
 		questions.screenShot();
 		btnAgregarActores.click();
 	}
-	
+
 	public void btnAgregarLider() {
 		questions.impliciWait();
 		btnAgregarLider.isDisplayed();
 		questions.screenShot();
 		btnAgregarLider.click();
 	}
-	
+
 	public void btnConsuResponsable(String buscarObjetivoP) {
 
 		WebElement objetivo = driver
 				.findElement(By.xpath("//td[contains(text(),'" + buscarObjetivoP + "')]/../td[5]/div/div[2]"));
+		questions.tiempoSegundos(1);
+		Actions scrolldown = new Actions(driver);
+		scrolldown.moveToElement(objetivo).build().perform();
+		questions.screenShot();
+		questions.impliciWait();
+		objetivo.click();
+		questions.screenShot();
+
+	}
+
+	public void btneditarResponsables(String buscarNombreP) {
+
+		WebElement objetivo = driver
+				.findElement(By.xpath("//label[contains(text(),'" + buscarNombreP + "')]/../../td[6]"));
+		questions.tiempoSegundos(1);
+		Actions scrolldown = new Actions(driver);
+		scrolldown.moveToElement(objetivo).build().perform();
+		questions.screenShot();
+		questions.impliciWait();
+		objetivo.click();
+		questions.screenShot();
+
+	}
+
+	public void btnEliminarResponsables(String buscarNombreP) {
+
+		WebElement objetivo = driver
+				.findElement(By.xpath("//label[contains(text(),'" + buscarNombreP + "')]/../../td[5]"));
 		questions.tiempoSegundos(1);
 		Actions scrolldown = new Actions(driver);
 		scrolldown.moveToElement(objetivo).build().perform();
