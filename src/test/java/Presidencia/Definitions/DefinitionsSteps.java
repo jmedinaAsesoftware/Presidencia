@@ -225,67 +225,26 @@ public class DefinitionsSteps {
 		this.creacionproductoPage.crearProductoM();
 	}
 	
-	@When("^Seleccione categoria (.*) y objetivos (.*)$")
+	@When("^Seleccione categoria (.*) y objetivos (.*) y hacer clic en Crear Producto$")
 	public void seleccionarOpciones(String categoriaP, String objetivoP) {
 		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.CategoriaM(categoriaP);
-		this.creacionproductoPage.ObjetivoM(objetivoP);
+		this.creacionproductoPage.seleccionarCategoriaObjetivoM(categoriaP, objetivoP);
 	}
-	
-	@And("^seleccionar boton Crear producto$")
-	public void CrearProducto() {
-		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.btncrearProductoM();
-	}
-	
-	@And("^seleccionar boton continuar$")
-	public void Continuar() {
-		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.btncontinuarM();
-	}
-	
-	@And("^Diligenciar campos Nombre Producto (.*) y Descripcion Producto (.*)$")
+		
+	@And("^Diligenciar campos Nombre Producto (.*) , Descripcion Producto(.*)$")
 	public void diligenciarProducto(String NombreProducto, String DescProducto) {
 		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.DiligenciarProductoM(NombreProducto,DescProducto);
-	}
+		this.creacionproductoPage.diligenciarProductoM(NombreProducto,DescProducto);
+	}	
 	
-	@And("^Seleccionar opcion Agregar otro dueno de producto$")
-	public void SeleccionarDuenoProducto() {
+	       
+	@And("^Diligenciar campos Dueno del producto(.*) y nombre del actor(.*)$")
+	public void diligenciarDuenoProducto(String DuenoProducto, String ActorProducto) {
 		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.selDuenoProductoM();
+		this.creacionproductoPage.diligenciarDuenoActorM(DuenoProducto,ActorProducto);
+		this.creacionproductoPage.guardarM();
+		this.creacionproductoPage.continuarM();
 	}
-	
-	@And("^diligenciar dueno del producto (.*)$")
-	public void diligenciarDuenoProducto(String DuenoProducto) {
-		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.DiligenciarDuenoProductoM(DuenoProducto);
-	}
-	
-	@And("^Seleccionar opcion Agregar otros actores$")
-	public void SeleccionarActores() {
-		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.selActoresM();
-	}
-	
-	@And("^diligenciar nombre del actor (.*)$")
-	public void diligenciarActorProducto(String ActorProducto) {
-		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.DiligenciarActorProductoM(ActorProducto);
-	}
-	@And("^seleccionar boton guardar$")
-	public void SeleccionarbtnGuardar() {
-		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.seleccionarbtnGuardarM();
-	}
-	
-	@And("^seleccionar boton continuar creacion producto$")
-	public void SeleccionarbtnContinuar() {
-		this.creacionproductoPage = new CreacionProductoPagina(driver);
-		this.creacionproductoPage.seleccionarbtnContinuarM();
-	}
-	
-	
 
 
 	@And("^Al seleccionar el nombre (.*) para editar el rol (.*) se confimar la actualizacion (.*)$")

@@ -18,55 +18,25 @@ public class CreacionProductoPagina {
 	private BotonesPaginas botonesPaginas;
 	private Preguntas preguntas;
 
-	@FindBy(how = How.XPATH, using = "//*[@id=\'menuLeftCollapsed\']/div[2]/a")
-	private WebElement opcioncreacionProducto;
-	
-	@FindBy(how = How.XPATH, using = "//div[@class='contenedor_imagen_piramide']")
-	private WebElement imagenpiramideProducto;
-	
-	
+		
 	@FindBy(how = How.XPATH, using = "//input[@id='demo-simple-select-placeholder-label-categoria']")
-	private WebElement textocategoriaProducto;
+	private WebElement textoCategoriaProducto;
 	
 	@FindBy(how = How.XPATH, using = "//input[@id='demo-simple-select-placeholder-label-objetivo']")
-	private WebElement textoobjetivoProducto;
+	private WebElement textoObjetivoProducto;
 	
-
-	@FindBy(how = How.XPATH, using = "//div[@class='MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2']")
-	private WebElement btnCrearProducto;
-	
-		
 	@FindBy(how = How.XPATH, using = "//input[@name='nombre']")
 	private WebElement textoNombre;
 	
 	@FindBy(how = How.XPATH, using = "//textarea[@name='descripcion']")
-	private WebElement multilineaDescripcion;
-	
-	
-	@FindBy(how = How.XPATH, using = "//p[contains(text(),'Agregar otro dueño de producto')]")
-	private WebElement linkDuenoProducto;
+	private WebElement textoDescripcion;
 	
 	@FindBy(how = How.XPATH, using = "//input[@name='duenos[0].nombre']")
 	private WebElement textoDuenoNombre;
-	
-	
-	@FindBy(how = How.XPATH, using = "//p[contains(text(),'Agregar otros actores')]")
-	private WebElement linkActoresProducto;
-	
+			
 	@FindBy(how = How.XPATH, using = "//input[@name='actores[0].nombre']")
 	private WebElement textoActorNombre;
-		
-		
-	@FindBy(how = How.XPATH, using = "//div[@role= 'presentation']//h2[@class='MuiTypography-root MuiTypography-h6']")
-	private WebElement assertConfirmacion;	
-	
-		
-	@FindBy(how = How.XPATH, using = "//div[@role= 'presentation']//h2[contains(text(),'¿Está seguro que desea continuar?')]")
-	private WebElement assertContinuar;	
-	
-	@FindBy(how = How.XPATH, using = "//div[@class='MuiDialogActions-root textoCentrado MuiDialogActions-spacing']//button[@class='botonPrincipalAzul']")
-	private WebElement btnassertContinuar;
-	
+			
 	public CreacionProductoPagina(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
@@ -78,134 +48,84 @@ public class CreacionProductoPagina {
 	@Step
 	public void crearProductoM() {
 		preguntas.screenShot();
-		preguntas.impliciWait();
-		opcioncreacionProducto.click();
+		botonesPaginas.btnMenuCrearProducto();
 		preguntas.screenShot();
-		preguntas.impliciWait();
-		imagenpiramideProducto.click();		
+		botonesPaginas.btnPiramideCrearProducto();		
 	}	
-	
-	
+		
 
 	@Step
-	public void CategoriaM(String categoriaP) {
+	public void seleccionarCategoriaObjetivoM(String categoriaP,String objetivoP ) {
+		
 		preguntas.impliciWait();
 		preguntas.screenShot();
-		textocategoriaProducto.click();
-		textocategoriaProducto.sendKeys(categoriaP);
-		textocategoriaProducto.sendKeys(Keys.ARROW_DOWN);
+		textoCategoriaProducto.sendKeys(categoriaP);
 		preguntas.impliciWait();
-		preguntas.screenShot();
-		textocategoriaProducto.sendKeys(Keys.ENTER);
+		textoCategoriaProducto.sendKeys(Keys.ARROW_DOWN);
+		preguntas.impliciWait();
+		textoCategoriaProducto.sendKeys(Keys.ENTER);
+		preguntas.impliciWait();
+	
+		
+		preguntas.impliciWait();
+		textoObjetivoProducto.sendKeys(objetivoP);
+		preguntas.impliciWait();
+		textoObjetivoProducto.sendKeys(Keys.ARROW_DOWN);
+		preguntas.impliciWait();
+		textoObjetivoProducto.sendKeys(Keys.ENTER);
 		preguntas.impliciWait();
 		preguntas.screenShot();
 		
-	}
-	
-	@Step
-	public void ObjetivoM(String objetivoP) {
+		preguntas.impliciWait();
+		botonesPaginas.btnCrearProducto_Mas();
+		preguntas.screenShot();
 		
-	    preguntas.impliciWait();
-	    preguntas.screenShot();
-	    textoobjetivoProducto.click();
-	    textoobjetivoProducto.sendKeys(objetivoP);
-	    textoobjetivoProducto.sendKeys(Keys.ARROW_DOWN);
 		preguntas.impliciWait();
 		preguntas.screenShot();
-		textoobjetivoProducto.sendKeys(Keys.ENTER);
-		preguntas.impliciWait();
-		preguntas.screenShot();		
-	}
+		botonesPaginas.BtnContinuar();
+	}	
 	
 	@Step
-	public void btncrearProductoM() {
+	public void diligenciarProductoM(String NombreProducto, String DescProducto) {
 		preguntas.impliciWait();
-		preguntas.screenShot();
-		btnCrearProducto.click();
-	}
-	
-	@Step
-	public void btncontinuarM() {
-		preguntas.impliciWait();
-	    preguntas.screenShot();
-	    botonesPaginas.BtnContinuar();
-	    
-	}
-	
-	@Step
-	public void DiligenciarProductoM(String NombreProducto, String DescProducto) {
-		preguntas.impliciWait();
-	    preguntas.screenShot();
 	    textoNombre.sendKeys(NombreProducto);
 	    preguntas.impliciWait();
 	    preguntas.screenShot();
-	    multilineaDescripcion.sendKeys(DescProducto);
+	    textoDescripcion.sendKeys(DescProducto);
 	}
-	
+		
 	@Step
-	public void selDuenoProductoM() {
+	public void diligenciarDuenoActorM(String DuenoProducto, String ActorProducto) {
 		preguntas.impliciWait();
-	    preguntas.screenShot();
-	    linkDuenoProducto.click();
-	}
-	
-	@Step
-	public void DiligenciarDuenoProductoM(String DuenoProducto) {
+		preguntas.screenShot();	
+		textoDuenoNombre.sendKeys(DuenoProducto);
 		preguntas.impliciWait();
-		preguntas.screenShot();
-        textoDuenoNombre.sendKeys(DuenoProducto);
 		textoDuenoNombre.sendKeys(Keys.ARROW_DOWN);
 		preguntas.impliciWait();
 		textoDuenoNombre.sendKeys(Keys.ENTER);
+		
 		preguntas.impliciWait();
-		preguntas.screenShot();		
-	}
-	
-	@Step
-	public void selActoresM() {
-		preguntas.impliciWait();
-	    preguntas.screenShot();
-	    linkActoresProducto.click();
-	}
-	
-	@Step
-	public void DiligenciarActorProductoM(String ActorProducto) {
-		preguntas.impliciWait();
-		preguntas.screenShot();
 		textoActorNombre.sendKeys(ActorProducto);
+		preguntas.impliciWait();
 		textoActorNombre.sendKeys(Keys.ARROW_DOWN);
 		preguntas.impliciWait();
 		textoActorNombre.sendKeys(Keys.ENTER);
 		preguntas.impliciWait();
-		preguntas.screenShot();		
+		preguntas.screenShot();			
 	}
-	
 	@Step
-	public void seleccionarbtnGuardarM() {
-		botonesPaginas.BtnGuardar();
-		preguntas.screenShot();	
-		
-		if(assertConfirmacion != null) {
-			preguntas.screenShot();
-			
-		}		
-		preguntas.impliciWait();
-		preguntas.screenShot();		
-		botonesPaginas.BtnSi();
-
-	}
-	
-	@Step
-	public void seleccionarbtnContinuarM() {
-	
+	public void guardarM() {
 		botonesPaginas.btnPrincipalGuardar();
-		if(assertContinuar != null) {
-			preguntas.screenShot();
-			
-		}
-		preguntas.impliciWait();
-		preguntas.screenShot();		
-		btnassertContinuar.click();
+		botonesPaginas.BtnSi();
+		preguntas.tiempoSegundos(1);
+		preguntas.AsserMensajeExitoso();
 	}
-	
+
+	@Step
+	public void continuarM() {
+		botonesPaginas.BtnContinuar();
+		botonesPaginas.btnDiagContinuar();
+		preguntas.tiempoSegundos(1);
+		preguntas.AsserMensajeExitoso();
+	}	
 }

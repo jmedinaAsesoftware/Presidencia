@@ -5,33 +5,23 @@ Background:
 	Given que se ingreso a la url
 	And dirigirse a la pantalla de creacion de producto
 
-@Regresion2
+@Regresion
 Scenario Outline: Creacion de Productos (136700) 
 
-	When Seleccione categoria <Categorias> y objetivos <Objetivos> 
-	And seleccionar boton Crear producto
-	And seleccionar boton continuar
-	And Diligenciar campos Nombre Producto <NombreProducto> y Descripcion Producto <DescProducto>
-	And Seleccionar opcion Agregar otro dueno de producto
-  And diligenciar dueno del producto <DuenoProducto>
-  And Seleccionar opcion Agregar otros actores
-  And diligenciar nombre del actor <ActorProducto>
-  And seleccionar boton guardar
-  And seleccionar boton continuar creacion producto
-  And Se cierra el navegador 
-
+	When Seleccione categoria <Categorias> y objetivos <Objetivos> y hacer clic en Crear Producto 
+	And  Diligenciar campos Nombre Producto <NombreProducto> , Descripcion Producto <DescProducto> 
+	And  Diligenciar campos Dueno del producto<DuenoProducto> y nombre del actor<ActorProducto>	
+	And  Se cierra el navegador   
 	
-	Examples: 
-		|Categorias                  |Objetivos	                  |NombreProducto              |DescProducto	            |DuenoProducto   |ActorProducto         |
-		|Categoría - cultura - teatro|Nueva Aspiración modificado |Prueba Automatizada Jorge   |Prueba Automatizada Jorge |Fernando Ruiz   |Angel Cabrera         |
+	Examples:
+	|Categorias                  |Objetivos	      |NombreProducto              |DescProducto	            |DuenoProducto  |ActorProducto   |
+	|Categoría - Paz - JEP       |Objetivo prueba |Prueba Automatizada Jorge   |Prueba Automatizada Jorge |Maria Angul    |Angel Cabrer    |
 	
 	
-	@Regresion2
+	@Regresion
 	Scenario Outline: Anexar Documentos (136694 Pendiente Solucion Bug Front CLic opción Ver archivos cargados)
-	   When Seleccione categoria <Categorias> y objetivos <Objetivos> 
-			And seleccionar boton Crear producto
-			And seleccionar boton continuar
-			And Diligenciar campos Nombre Producto <NombreProducto> y Descripcion Producto <DescProducto>			
+	   When Seleccione categoria <Categorias> y objetivos <Objetivos> y hacer clic en Crear Producto 
+			And  Diligenciar campos Nombre Producto <NombreProducto> , Descripcion Producto <DescProducto> 
 	    And se debe anexar documentos y ver archivos cargados
 	    And Se cierra el navegador
 	    

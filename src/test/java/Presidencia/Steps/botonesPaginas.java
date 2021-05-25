@@ -78,6 +78,15 @@ public class BotonesPaginas {
 
 	@FindBy(how = How.XPATH, using = "//label[contains(text(), 'Agregar líder')]")
 	private WebElement btnAgregarLider;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='itemMenuPiramide']")
+	private WebElement btnMenuCrearProducto;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='contenedor_imagen_piramide']")
+	private WebElement btnPiramideCrearProducto;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='contenedor_imagen_crear_producto encendido']")
+	private WebElement btnCrearProductoMas;
 
 	public BotonesPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -300,7 +309,24 @@ public class BotonesPaginas {
 		questions.impliciWait();
 		objetivo.click();
 		questions.screenShot();
-
+	}
+	
+	public void btnMenuCrearProducto() {
+		btnMenuCrearProducto.click();
+		questions.impliciWait();
+		questions.tiempoSegundos(1);
+	}
+	
+	public void btnPiramideCrearProducto() {
+		btnPiramideCrearProducto.click();
+		questions.impliciWait();
+		questions.tiempoSegundos(1);
+	}
+	
+	public void btnCrearProducto_Mas() {
+		btnCrearProductoMas.click();
+		questions.impliciWait();
+		questions.tiempoSegundos(1);
 	}
 
 }
