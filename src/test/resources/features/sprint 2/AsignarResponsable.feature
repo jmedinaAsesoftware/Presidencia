@@ -5,7 +5,9 @@ Background:
 	Given que se ingreso a la url 
 	When Llegue a la opcion asignar responsables 
 	
-@Regresion1
+
+@Regresion2
+
 Scenario Outline: Asignación de responsable Líder Cumplimiento. TEST CASE 136670 
 
 	And Buscar categoria y objetivo <buscarObjetivoP> y hacer clic en boton Mas 
@@ -16,7 +18,7 @@ Scenario Outline: Asignación de responsable Líder Cumplimiento. TEST CASE 1366
 		|buscarObjetivoP  |nombreP|
 		|Objetivo prueba 1  |ivan|
 		
-		@Regresion1
+		@Regresion2
 		Scenario Outline: Asignación responsable Otros Actores TEST CASE 136672 
 			And Buscar categoria y objetivo <buscarObjetivoP> y hacer clic en boton Mas 
 			Then Se agregue un actor <nombreP> y rol <rolCumplimiento> 
@@ -26,7 +28,7 @@ Scenario Outline: Asignación de responsable Líder Cumplimiento. TEST CASE 1366
 				|Objetivo prueba 1|Claudi	|Pruebas Automat|
 				
 				
-				@Regresion1
+				@Regresion2
 				Scenario Outline: Consultar responsables TEST CASE 136677 
 					Then Buscar categoria y objetivo <buscarObjetivoP> y hacer clic en editar 
 					And Se cierra el navegador 
@@ -34,7 +36,7 @@ Scenario Outline: Asignación de responsable Líder Cumplimiento. TEST CASE 1366
 						|buscarObjetivoP  |
 						|Objetivo prueba 1|
 						
-						@Regresion1
+						@Regresion2
 						Scenario Outline: editar responsables TEST CASE 136679 
 							Then Buscar categoria y objetivo <buscarObjetivoP> y hacer clic en editar 
 							And Al seleccionar el nombre <buscarNombreP> para editar el rol <rolCumplimientoP> se confimar la actualizacion <buscarObjetivoP> 
@@ -43,7 +45,7 @@ Scenario Outline: Asignación de responsable Líder Cumplimiento. TEST CASE 1366
 								|buscarObjetivoP  |buscarNombreP|rolCumplimientoP|
 								|Objetivo prueba 1 |Claudi|borrador|
 								
-								@Regresion1
+								@Regresion2
 								Scenario Outline: eliminar responsables TEST CASE 136679 
 									Then Buscar categoria y objetivo <buscarObjetivoP> y hacer clic en editar 
 									And Al seleccionar el nombre <buscarNombreP> para eliminar el responsable se confimar la eliminacion <buscarObjetivoP>

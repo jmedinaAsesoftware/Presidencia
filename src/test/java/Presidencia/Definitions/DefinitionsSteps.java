@@ -9,6 +9,7 @@ import Presidencia.Paginas.AspiracionesPaginas;
 import Presidencia.Paginas.EvaluacionRiesgoPagina;
 import Presidencia.Paginas.periodoCumplimientoPagina;
 import Presidencia.Paginas.tiposRiesgosPagina;
+import Presidencia.Paginas.CreacionProductoPagina;
 import Presidencia.Steps.Conexion;
 import Presidencia.Steps.ElementosPaginas;
 import cucumber.api.java.en.And;
@@ -23,6 +24,7 @@ public class DefinitionsSteps {
 	private Conexion conexion = new Conexion();
 	private periodoCumplimientoPagina periodoCumplimientoPage = new periodoCumplimientoPagina(driver);
 	private tiposRiesgosPagina tiposRiesgosPage = new tiposRiesgosPagina(driver);
+	private CreacionProductoPagina creacionproductoPage = new CreacionProductoPagina(driver);
 
 	private EvaluacionRiesgoPagina evaluacionRiesgoPagina = new EvaluacionRiesgoPagina(driver);
 	private ElementosPaginas elementosPaginas = new ElementosPaginas(driver);
@@ -181,6 +183,7 @@ public class DefinitionsSteps {
 
 	}
 
+
 	@When("^Llegue a la opcion asignar responsables$")
 	public void llegarAsignar() {
 		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
@@ -215,6 +218,35 @@ public class DefinitionsSteps {
 		this.asignacionResponsablesPaginas.consultarResponsableM(buscarObjetivoP);
 	}
 	
+
+	@And("^dirigirse a la pantalla de creacion de producto$")
+	public void DirigirCreacionProducto() {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.crearProductoM();
+	}
+	
+	@When("^Seleccione categoria (.*) y objetivos (.*) y hacer clic en Crear Producto$")
+	public void seleccionarOpciones(String categoriaP, String objetivoP) {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.seleccionarCategoriaObjetivoM(categoriaP, objetivoP);
+	}
+		
+	@And("^Diligenciar campos Nombre Producto (.*) , Descripcion Producto(.*)$")
+	public void diligenciarProducto(String NombreProducto, String DescProducto) {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.diligenciarProductoM(NombreProducto,DescProducto);
+	}	
+	
+	       
+	@And("^Diligenciar campos Dueno del producto(.*) y nombre del actor(.*)$")
+	public void diligenciarDuenoProducto(String DuenoProducto, String ActorProducto) {
+		this.creacionproductoPage = new CreacionProductoPagina(driver);
+		this.creacionproductoPage.diligenciarDuenoActorM(DuenoProducto,ActorProducto);
+		this.creacionproductoPage.guardarM();
+		this.creacionproductoPage.continuarM();
+	}
+
+
 	@And("^Al seleccionar el nombre (.*) para editar el rol (.*) se confimar la actualizacion (.*)$")
 	public void editarRolResponsable(String buscarNombreP, String rolCumplimientoP, String buscarObjetivoP) {
 		this.asignacionResponsablesPaginas = new AsignacionResponsablesPaginas(driver);
@@ -230,4 +262,5 @@ public class DefinitionsSteps {
 		this.asignacionResponsablesPaginas.eliminarResponsableM(buscarNombreP);
 		this.asignacionResponsablesPaginas.consultarResponsableM(buscarObjetivoP);
 	}
+
 }

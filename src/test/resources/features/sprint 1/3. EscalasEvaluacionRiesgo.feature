@@ -6,7 +6,7 @@ Background:
 	And dirigirse al formulario de evaluacion riesgo 
 	And se debe anexar documentos y ver archivos cargados 
 	
-@Regresion 
+@Regresion1 
 Scenario Outline: Agregar impacto en el cumplimiento (133080) 
 
 	When diligencie el campo nivel 1 <nivel1P> descripcion <descripNivel1P> campo nivel 2 <nivel2P> descripcion <descripNivel2P> 
@@ -17,7 +17,7 @@ Scenario Outline: Agregar impacto en el cumplimiento (133080)
 		|Demaciado bajo |Descripcion1  |Nivel2  |descrip2	  |Nivel3 |Descr3		 |Nivel4 |Descrip4		|Nivel5	|Descri5       |
 		
 		
-		@Regresion 
+		@Regresion1 
 		Scenario Outline: Agregar probabilidad de ocurrencia (133084) 
 		
 			When limpie los campos de probabilidad de ocurrencia 

@@ -1,6 +1,9 @@
 package Presidencia.Paginas;
 
 
+//import org.junit.Assert;
+//import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,8 +30,6 @@ public class tiposRiesgosPagina {
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//h2[@class = 'MuiTypography-root MuiTypography-h6']")
 	private WebElement assertConfirmacionEliminar;
 	
-
-
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//p[@class = 'MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-filled MuiFormHelperText-marginDense']")
 	private WebElement assertYaExiste;
 
@@ -100,14 +101,15 @@ public class tiposRiesgosPagina {
 		questions.tiempoSegundos(1);
 		questions.screenShot();
 		botonesPaginas.btnEliminarRiesgo(nombreBuscar);
-		
+				
 		if(assertConfirmacionEliminar != null) {
 			questions.screenShot();
 			
-		}
-		botonesPaginas.BtnSi();
+		}		
 		questions.impliciWait();
 		questions.screenShot();		
-
+		botonesPaginas.BtnSi();
+		
+		
 	}
 }

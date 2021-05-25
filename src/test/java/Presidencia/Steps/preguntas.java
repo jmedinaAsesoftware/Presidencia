@@ -35,7 +35,7 @@ public class Preguntas {
 		File scr = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String filename = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 
-		File dest = new File("C:\\Users\\jmedina\\Documents\\Captura\\screenshot" + filename + ".png");
+		File dest = new File("C:\\Users\\Asesoftware\\eclipse-workspace\\Captura\\screenshot" + filename + ".png");
 
 		try {
 			FileUtils.copyFile(scr, dest);

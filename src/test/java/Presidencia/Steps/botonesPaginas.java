@@ -39,6 +39,7 @@ public class BotonesPaginas {
 //	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Sí')]")
 //private WebElement BtnSi;
 
+
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Continuar')]")
 	private WebElement BtnContinuar;
 
@@ -56,9 +57,6 @@ public class BotonesPaginas {
 
 	@FindBy(how = How.XPATH, using = "//table//tbody//tr//*[contains(text(),'Automatizacion')]")
 	private WebElement btnPrueba;
-
-	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//button[@class='botonPrincipalBlanco']")
-	private WebElement btnNo;
 
 	@FindBy(how = How.XPATH, using = "//div[@role= 'dialog']//button[@class='botonPrincipalAzul']")
 	private WebElement BtnSi;
@@ -80,6 +78,15 @@ public class BotonesPaginas {
 
 	@FindBy(how = How.XPATH, using = "//label[contains(text(), 'Agregar líder')]")
 	private WebElement btnAgregarLider;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='itemMenuPiramide']")
+	private WebElement btnMenuCrearProducto;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='contenedor_imagen_piramide']")
+	private WebElement btnPiramideCrearProducto;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='contenedor_imagen_crear_producto encendido']")
+	private WebElement btnCrearProductoMas;
 
 	public BotonesPaginas(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -118,7 +125,7 @@ public class BotonesPaginas {
 
 	public void CargarArchivo() throws AWTException {
 
-		File file = new File("C:\\Users\\jmedina\\Documents\\Captura\\RAC-26 Automatizacion Sinap.doc");
+		File file = new File("C:\\Documentos\\CO_863_SINAP.docx");
 		String path = file.getAbsolutePath();
 		driver.findElement(By.xpath("//input[@type = 'file']")).sendKeys(path);
 		questions.tiempoSegundos(1);
@@ -184,7 +191,7 @@ public class BotonesPaginas {
 		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscar + "')]/../../td[4]")).click();
 
 	}
-
+	
 	public void btnPrincipalGuardar() {
 		questions.tiempoSegundos(1);
 		btnPrincipalGuardar.click();
@@ -196,7 +203,7 @@ public class BotonesPaginas {
 	public void CargarArchivoMasivo() throws AWTException {
 
 		File file = new File(
-				"C:\\Users\\jmedina\\Documents\\Captura\\DocumentoReferenciaCargueAspiracionesFormato.xlsx");
+				"C:\\Documentos\\PruebaPresidencia.xlsx");
 		String path = file.getAbsolutePath();
 		driver.findElement(By.xpath("//input[@type = 'file']")).sendKeys(path);
 		questions.tiempoSegundos(1);
@@ -219,7 +226,7 @@ public class BotonesPaginas {
 
 		driver.findElement(By.xpath("//td/label[contains(text(),'" + nombreBuscar + "')]/../../td[6]")).click();
 
-	}
+	}	
 
 	public void btnMenu() {
 		questions.impliciWait();
@@ -275,7 +282,7 @@ public class BotonesPaginas {
 		objetivo.click();
 		questions.screenShot();
 
-	}
+	}	
 
 	public void btneditarResponsables(String buscarNombreP) {
 
@@ -302,6 +309,24 @@ public class BotonesPaginas {
 		questions.impliciWait();
 		objetivo.click();
 		questions.screenShot();
-
 	}
+	
+	public void btnMenuCrearProducto() {
+		btnMenuCrearProducto.click();
+		questions.impliciWait();
+		questions.tiempoSegundos(1);
+	}
+	
+	public void btnPiramideCrearProducto() {
+		btnPiramideCrearProducto.click();
+		questions.impliciWait();
+		questions.tiempoSegundos(1);
+	}
+	
+	public void btnCrearProducto_Mas() {
+		btnCrearProductoMas.click();
+		questions.impliciWait();
+		questions.tiempoSegundos(1);
+	}
+
 }
